@@ -1,6 +1,6 @@
 {
   "name": "ai-builder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Skills pour construire et diagnostiquer des skills, agents, commandes slash et hooks",
   "author": {
     "name": "Frederick",

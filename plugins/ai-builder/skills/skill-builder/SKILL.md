@@ -120,7 +120,9 @@ into `references/`, one file per subject, linked from the body.
 Templates and long examples go in `assets/` as **real files**, never pasted into a
 fenced block: a fenced block inside a fenced block closes the outer one early and
 silently swallows everything after it. Start from `assets/template-minimal/` or
-`assets/template-with-script/` and copy the directory.
+`assets/template-with-script/`, copy the directory, then rename
+`SKILL.md.template` to `SKILL.md` (the suffix stops the template from loading as a
+skill of its own).
 
 A skill that ships a script keeps it to the deterministic part — parse, count,
 validate, render — and keeps every function small: follow `references/scripts.md`.
@@ -183,4 +185,4 @@ Per-platform shortcuts where one exists, and what no command will tell you:
 - `references/troubleshooting.md` — does not load, does not trigger, fires wrongly
 - `references/scripts.md` — what goes in a script, and how to keep it small
 - `scripts/lint_skill.py` — the fourteen checks
-- `assets/template-minimal/` and `assets/template-with-script/` — copy these
+- `assets/template-minimal/` and `assets/template-with-script/` — copy these (rename `SKILL.md.template` to `SKILL.md`)

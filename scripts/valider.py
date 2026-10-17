@@ -36,10 +36,18 @@ def frontmatter(chemin: Path) -> dict | None:
         erreurs.append(f"{chemin.relative_to(RACINE)} : frontmatter YAML manquant (bloc --- en tête)")
         return None
     champs = {}
+    cle = None
     for ligne in bloc.group(1).splitlines():
         m = re.match(r"^([A-Za-z0-9_-]+)\s*:\s*(.*)$", ligne)
         if m:
-            champs[m.group(1)] = m.group(2).strip().strip('"').strip("'")
+            cle = m.group(1)
+            valeur = m.group(2).strip()
+            # Bloc YAML replié ou littéral (« > », « |- »…) : la valeur suit sur les lignes indentées
+            champs[cle] = "" if re.fullmatch(r"[>|][+-]?", valeur) else valeur.strip('"').strip("'")
+        elif cle and ligne.startswith((" ", "\t")):
+            champs[cle] = (champs[cle] + " " + ligne.strip()).strip()
+        else:
+            cle = None
     return champs
 
 
@@ -65,6 +73,12 @@ def verifier_plugin(dossier: Path, nom_entree: str) -> None:
             exiger(skill, champs, "name", "description")
             if champs.get("name") and champs["name"] != skill.parent.name:
                 erreurs.append(f"{skill.relative_to(RACINE)} : name « {champs['name']} » ≠ dossier « {skill.parent.name} »")
+            if re.search(r"[<>]", champs.get("description", "")):
+                erreurs.append(f"{skill.relative_to(RACINE)} : la description contient des chevrons < > "
+                               "(refusés par claude.ai, pris pour des balises XML)")
+    for imbrique in sorted((dossier / "skills").glob("*/*/**/SKILL.md")):
+        erreurs.append(f"{imbrique.relative_to(RACINE)} : SKILL.md imbriqué, il serait chargé comme un skill à part. "
+                       "Renomme un gabarit en SKILL.md.template")
     for dossier_skill in sorted(p for p in (dossier / "skills").glob("*") if p.is_dir()):
         if not (dossier_skill / "SKILL.md").exists():
             erreurs.append(f"{dossier_skill.relative_to(RACINE)} : SKILL.md manquant (attention à la casse)")
