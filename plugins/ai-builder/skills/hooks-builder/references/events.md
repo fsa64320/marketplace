@@ -2,10 +2,8 @@
 
 Adapted from the `hooks-builder` skill of claude-vibes (MIT).
 
-**This file is the platform-specific one.** Everything below is Claude Code's, and it
-is **documented rather than measured**: unlike the identity rules and argument
-substitution that the sibling builders establish by probe, nothing here was verified in
-this repository. Treat it as a map of what to look for, and confirm on the build you
+**This file is the platform-specific one.** Everything below is Claude Code's, taken from
+its documentation. Treat it as a map of what to look for, and confirm on the build you
 target before relying on a detail.
 
 ## The events
@@ -106,7 +104,7 @@ exactly one machine.
 
 ## Not verified
 
-Everything in this file. Specifically worth a probe before you depend on it: whether
+Everything in this file. Specifically worth testing before you depend on it: whether
 `exit 1` is really non-blocking on your build, whether the filter is case-sensitive,
 and which fields the payload actually carries for the event you chose. The method is
 step 6 of `SKILL.md` — mock input costs a minute and settles all three.

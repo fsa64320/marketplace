@@ -147,7 +147,7 @@ skipped, and it is the only one that proves the protection is real.
 ## Additional resources
 
 - `references/events.md` — the events, their roles, the exit-code contract and the
-  payload, per platform, measured versus documented
+  payload, per platform
 - `references/security.md` — why a hook is the risky one, and the patterns that hold
 - `references/troubleshooting.md` — never fires, blocks everything, fails open
 - `assets/hook-guard.py` and `assets/hook-observer.sh` — copy these

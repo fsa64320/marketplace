@@ -22,7 +22,7 @@ Tableau généré par `python3 scripts/catalogue.py` à partir des manifestes ; 
 <!-- plugins:start -->
 | Plugin | Version | Description | Composants |
 | --- | --- | --- | --- |
-| `ai-builder` | 1.0.2 | Skills pour construire et diagnostiquer des skills, agents, commandes slash et hooks | Skills : `agent-builder`, `hooks-builder`, `skill-builder`, `slash-command-builder` |
+| `ai-builder` | 1.0.3 | Skills pour construire et diagnostiquer des skills, agents, commandes slash et hooks | Skills : `agent-builder`, `hooks-builder`, `skill-builder`, `slash-command-builder` |
 <!-- plugins:end -->
 
 Les composants d'un plugin sont préfixés par son nom : `ai-builder:skill-builder`.

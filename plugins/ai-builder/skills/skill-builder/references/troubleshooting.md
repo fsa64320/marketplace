@@ -23,7 +23,7 @@ Then the platform-specific ones, which only apply on the harness in question:
 - **Claude Code plugins** — a component path resolving outside the plugin root is
   rejected as `path escapes plugin directory`, and the plugin loads **without that
   component**, silently. Check the plugin is installed and enabled.
-- **Other targets** — no equivalent failure has been measured here. Confirm placement
+- **Other targets** — no equivalent failure is known. Confirm placement
   first, then fall back to the behavioural check in `platforms.md`.
 
 A malformed `name` is deliberately **not** on this list: it does not prevent loading.
@@ -76,8 +76,7 @@ Now it *is* the body.
 
 There is no cross-platform skill linter, which is why this skill ships one. And a
 manifest validator is not a skill validator: on Claude Code, `claude plugin validate`
-passed a skill carrying a malformed `name` and a `tools:` key without comment —
-measured 2026-09-13.
+passed a skill carrying a malformed `name` and a `tools:` key without comment.
 
 The check that works everywhere is behavioural: start a fresh session on the target
 harness and make the real request. Then make two that must **not** fire it, because

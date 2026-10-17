@@ -26,8 +26,8 @@ placeholder produces a confident answer about nothing.
 The filename minus .md is the command name. Lowercase and hyphens.
 
 $ARGUMENTS is used here on purpose: it takes the whole invocation as one block and
-cannot be off by one. Positional $1/$2 are offset — $1 is the SECOND word. Measured
-2026-09-13; see references/syntax.md before using them.
+cannot be off by one. Positional $1/$2 are offset — $1 is the SECOND word.
+See references/syntax.md before using them.
 
 No allowed-tools declared: the key travels between platforms, the capability names
 inside it do not. Add it only if this command is deliberately single-platform, and

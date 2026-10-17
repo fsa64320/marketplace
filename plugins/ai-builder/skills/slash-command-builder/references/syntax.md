@@ -2,8 +2,6 @@
 
 Adapted from the `slash-command-builder` skill of claude-vibes (MIT).
 
-Everything is **measured** — dated, with the method — or marked as not verified.
-
 ## Shape
 
 A command is a Markdown file: optional YAML frontmatter, then the prompt. There is
@@ -22,7 +20,7 @@ argument-hint: [file] [priority]
 ...
 ```
 
-**Measured 2026-09-13**: `probe-cmd.md` was invoked as `/probe-cmd`. Naming follows
+`probe-cmd.md` is invoked as `/probe-cmd`. Naming follows
 the filename's constraints — lowercase, hyphens, no spaces.
 
 ## Arguments — and the off-by-one
@@ -34,7 +32,7 @@ Two forms:
 | `$ARGUMENTS` | everything the user typed after the command name, as one block |
 | `$1`, `$2`, `$3`… | positional parameters |
 
-**Measured 2026-09-13**, twice, in a non-interactive session:
+In a non-interactive session:
 
 ```
 /probe-cmd ALPHA BRAVO CHARLIE
@@ -60,11 +58,11 @@ Consequences, and they are the practical value of this file:
 - **If you use positionals, verify the mapping with distinguishable values.** Testing
   with `a b c` cannot reveal an offset; `ALPHA BRAVO CHARLIE` can.
 - **Never document a positional contract you have not run.** Write the mapping you
-  measured, not the one you expect.
+  observed, not the one you expect.
 
-**Not verified**: whether the offset also applies to an interactive invocation.
-Measured only through a non-interactive session, where the whole line is parsed as a
-prompt, which is a plausible cause. Confirm interactively before relying on the
+**Not verified**: whether the offset also applies to an interactive invocation. In a
+non-interactive session the whole line is parsed as a prompt, which is a plausible
+cause. Confirm interactively before relying on the
 numbering — and prefer `$ARGUMENTS`, which sidesteps the question entirely.
 
 ## Gathering context
@@ -76,7 +74,7 @@ Two mechanisms, both resolved before the prompt reaches the model:
 - **File reference** — inline a file's contents by referring to its path with an `@`
   prefix. A directory yields a listing, not contents.
 
-**Measured 2026-09-13, a correction to the source**: the form `[execute: echo X]`
+**A correction to the source**: the form `[execute: echo X]`
 that the source documents **does not execute**. It came through as literal text in
 the rendered prompt. The source's own wording contradicts itself on this point,
 telling the reader "backticks required" while showing a form with no backticks — the

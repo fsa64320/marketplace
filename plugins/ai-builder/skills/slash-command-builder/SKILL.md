@@ -149,8 +149,8 @@ Diagnosis for every other symptom: `references/troubleshooting.md`.
 
 ## Additional resources
 
-- `references/syntax.md` — the argument forms, the measured off-by-one, frontmatter,
-  context gathering and file references, with what is measured versus documented
+- `references/syntax.md` — the argument forms, the off-by-one, frontmatter,
+  context gathering and file references
 - `references/platforms.md` — who places the file, and how to verify per harness
 - `references/troubleshooting.md` — not listed, wrong argument, placeholder leaking
 - `assets/command-minimal.md` and `assets/command-with-context.md` — copy these

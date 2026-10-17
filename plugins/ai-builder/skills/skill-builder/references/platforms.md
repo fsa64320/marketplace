@@ -12,7 +12,7 @@ instructions to bake into a skill body.
 
 ## What APM deploys, and where
 
-**Measured 2026-09-13**, APM CLI 0.28.0, `apm targets --json --all`:
+APM CLI 0.28.0, `apm targets --json --all`:
 
 | Target | Deploy directory | Detected by |
 | --- | --- | --- |
@@ -79,7 +79,7 @@ it loaded and it matched.
 
 Platform-specific shortcuts, where one exists:
 
-- **Claude Code** — measured 2026-09-13. Lists what actually loaded:
+- **Claude Code** — lists what actually loaded:
   ```bash
   claude -p "List verbatim the names of the skills available to you matching <term>."
   ```
@@ -109,6 +109,5 @@ A plugin is `.claude-plugin/plugin.json` plus its own `skills/`. Three traps:
 ## Not verified
 
 Per-platform frontmatter quirks — whether any target ignores or rejects keys beyond
-`name` and `description`, and how each handles a `references/` subdirectory — have
-**not** been measured here. The portable core in `frontmatter.md` is what has been
-checked; treat anything beyond it as untested until you test it on the target.
+`name` and `description`, and how each handles a `references/` subdirectory — are not
+covered here. The portable core in `frontmatter.md` is what holds everywhere; treat anything beyond it as untested until you test it on the target.
