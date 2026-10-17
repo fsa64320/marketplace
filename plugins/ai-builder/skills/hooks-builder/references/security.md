@@ -102,6 +102,6 @@ review.
 
 ## Not verified
 
-The exit-code behaviour these patterns rely on is documented rather than measured here —
-see `events.md`. Confirm with mock input that a non-2 exit really does not block on your
+The exit-code behaviour these patterns rely on comes from the documentation — see
+`events.md`. Confirm with mock input that a non-2 exit really does not block on your
 build before trusting a fail-safe path that depends on it.

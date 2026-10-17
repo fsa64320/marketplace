@@ -12,7 +12,7 @@ referred to relatively.
 
 ## What APM deploys, and where
 
-**Measured 2026-09-13**, APM CLI 0.28.0, `apm targets --json --all`:
+APM CLI 0.28.0, `apm targets --json --all`:
 
 | Target | Deploy directory | Detected by |
 | --- | --- | --- |
@@ -30,8 +30,8 @@ referred to relatively.
 The wider set accepted by `--target` includes `agents`, `copilot-app`,
 `copilot-cowork`, `antigravity`, `hermes`, `openclaw`, `grok-cloud`, `intellij` and
 `vscode`; some are experimental and need a feature flag, and `all` excludes
-`agent-skills` and the experimental ones. Those did not resolve a deploy directory in
-the probe project, so they are **unmeasured** here.
+`agent-skills` and the experimental ones. Those did not resolve a deploy directory, so
+they are not in the table.
 
 ```bash
 apm install --global --target claude,copilot,opencode <org>/<repo>/skills/<name>
@@ -40,7 +40,7 @@ apm install --global --target claude,copilot,opencode <org>/<repo>/skills/<name>
 Within a harness, an agent is conventionally a single file under an `agents/`
 subdirectory of that deploy directory — on Claude Code, `.claude/agents/<file>.md`,
 project scope, and the same under the user's home directory for personal scope. That
-layout is measured for Claude Code only; do not assume it elsewhere.
+layout holds for Claude Code; do not assume it elsewhere.
 
 ## Verification, per platform
 
@@ -54,7 +54,7 @@ The portable check is behavioural and needs no CLI. Three passes, in a fresh ses
 
 Platform-specific shortcuts, where one exists:
 
-- **Claude Code** — measured 2026-09-13. Lists what actually loaded, and under which
+- **Claude Code** — lists what actually loaded, and under which
   identity:
   ```bash
   claude -p "List verbatim every agent type available to you whose name contains <term>."

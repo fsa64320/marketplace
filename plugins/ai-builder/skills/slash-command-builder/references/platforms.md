@@ -8,7 +8,7 @@ user runs. A command file that names its own install path has picked a platform.
 
 ## What APM deploys, and where
 
-**Measured 2026-09-13**, APM CLI 0.28.0, `apm targets --json --all`:
+APM CLI 0.28.0, `apm targets --json --all`:
 
 | Target | Deploy directory | Detected by |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ user runs. A command file that names its own install path has picked a platform.
 
 Within a harness, a command is conventionally a single file under a `commands/`
 subdirectory of that deploy directory, with a personal equivalent under the user's
-home directory. Measured for Claude Code only.
+home directory. This holds for Claude Code; do not assume it elsewhere.
 
 ```bash
 apm install --global --target claude,copilot,opencode <org>/<repo>/skills/<name>
@@ -55,7 +55,7 @@ The portable check needs no CLI: open a fresh session on the target harness, con
 the command is listed, and invoke it with distinguishable argument values — see step 7
 of `SKILL.md`, which is where the offset gets caught.
 
-- **Claude Code** — measured 2026-09-13. A non-interactive invocation runs the command
+- **Claude Code** — a non-interactive invocation runs the command
   and returns its output, which is how the argument mapping in `references/syntax.md`
   was established:
   ```bash
@@ -73,6 +73,5 @@ of `SKILL.md`, which is where the offset gets caught.
   and with which sigils.
 - Whether the frontmatter keys beyond `description` are read, ignored or rejected
   elsewhere.
-- Deploy directories for the targets APM accepts but did not resolve in the probe
-  project. APM 0.30.0 exists; re-run `apm targets --json --all` after updating and
+- Deploy directories for the targets APM accepts but did not resolve. APM 0.30.0 exists; re-run `apm targets --json --all` after updating and
   correct the table above — this file is the only place that needs touching.

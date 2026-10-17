@@ -19,10 +19,10 @@ not parsing. That makes command failures faster to diagnose than skill or agent 
 
 ## It runs, but an argument is wrong
 
-**Check this before anything else, because it is measured and counter-intuitive.**
+**Check this before anything else, because it is counter-intuitive.**
 
-`$1` resolves to the **second** word of the invocation, not the first. Measured
-2026-09-13, twice. `/cmd ALPHA BRAVO` gives `$1 = BRAVO`.
+`$1` resolves to the **second** word of the invocation, not the first.
+`/cmd ALPHA BRAVO` gives `$1 = BRAVO`.
 
 | Symptom | Cause | Fix |
 | --- | --- | --- |
@@ -44,7 +44,7 @@ failure mode here, because the output looks like a result.
 | --- | --- |
 | Placeholder misspelled | Check the exact sigil, case included |
 | No arguments passed at invocation | Have the command say what it needs rather than proceeding |
-| Context-gathering syntax wrong | See `references/syntax.md` — the form `[execute: …]` does **not** work; measured 2026-09-13 |
+| Context-gathering syntax wrong | See `references/syntax.md` — the form `[execute: …]` does **not** work |
 | Missing capability for the gathering | Declare the shell capability, scoped to the command family used |
 | Referenced file does not exist | Verify the path; a reference that resolves to nothing is silent |
 

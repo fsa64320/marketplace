@@ -29,8 +29,8 @@ whole class: the agent is fine, the description is not.
 | Is it in the directory the harness reads? | See `platforms.md` | Wrong location, or the transport deployed elsewhere — `apm install --dry-run` shows placement |
 | Is `description` present and non-empty? | — | An agent with no description cannot be selected, and may not be listed |
 
-A malformed `name` is deliberately **not** on this list: measured 2026-09-13, uppercase,
-underscores and spaces all load. See `frontmatter.md`.
+A malformed `name` is deliberately **not** on this list: uppercase, underscores and spaces all
+load. See `frontmatter.md`.
 
 ## The wrong agent is picked
 
@@ -72,5 +72,4 @@ cause: a step that assumes the conversation.
 - An agent doing two jobs pays for both every time. Split it — the scope sentence
   from step 2 of `SKILL.md` is the test.
 - Where the platform allows a model choice, match it to the work: a mechanical check
-  does not need the most capable model. See `frontmatter.md` for what is measured and
-  what is not.
+  does not need the most capable model. See `frontmatter.md` for the fields per platform.

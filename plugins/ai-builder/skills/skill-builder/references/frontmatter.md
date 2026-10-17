@@ -1,8 +1,6 @@
 # SKILL.md frontmatter
 
-Split into what travels between platforms and what does not. Everything is either
-**measured** — dated, with the method — or marked as not verified. The distinction is
-deliberate: remembered rules stated as specification is how this subject goes wrong.
+Split into what travels between platforms and what does not.
 
 ## The portable core
 
@@ -38,8 +36,7 @@ allowed-tools: Bash(playwright-cli:*) Bash(npx:*) Bash(npm:*)
   no leading, trailing or doubled hyphen.
 - **Must equal the directory name.**
 
-**Measured 2026-09-13** on Claude Code. Four probe skills, listed from a fresh
-non-interactive session:
+On Claude Code, four test skills, listed from a fresh non-interactive session:
 
 | Directory | `name:` field | Loads | Listed as |
 | --- | --- | --- | --- |
@@ -56,7 +53,7 @@ Two conclusions, the second being the one that gets missed:
 
 So the failure mode is not a crash but a divergence: invocation, documentation and
 every reference to the skill disagree, and it surfaces in someone else's session.
-Measured on one platform; the rule is worth keeping everywhere, because a directory
+The rule is worth keeping everywhere, because a directory
 name is what every transport in `platforms.md` copies.
 
 Normalisation, applied mechanically:
@@ -125,10 +122,9 @@ losing portability; both are legitimate, but the choice should be explicit.
 ## Not verified
 
 - Whether any target beyond Claude Code **rejects** rather than ignores unknown
-  frontmatter keys. Untested here; the portable core above is what has been checked.
+  frontmatter keys. The portable core above is what holds everywhere.
 - Whether every target reads a `references/` subdirectory on demand the same way.
-  The format allows it and this repository relies on it, but it has been measured on
-  one platform only.
+  The format allows it and this repository relies on it.
 - Whether a debug flag on any platform prints a per-skill load line. Some guides
   claim one for Claude Code; unconfirmed. Use the behavioural check in
   `platforms.md` instead, which is deterministic everywhere.

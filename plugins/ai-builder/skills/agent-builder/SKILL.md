@@ -152,7 +152,7 @@ Diagnosis for every other symptom: `references/troubleshooting.md`.
 ## Additional resources
 
 - `references/prompt-craft.md` — the five sections, with patterns for each
-- `references/frontmatter.md` — the fields, per platform, measured versus documented
+- `references/frontmatter.md` — the fields, per platform
 - `references/platforms.md` — who places the file, and how to verify per harness
 - `references/troubleshooting.md` — never picked, wrong one picked, cannot act
 - `assets/agent-minimal.md` and `assets/agent-restricted.md` — copy these

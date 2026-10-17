@@ -4,9 +4,6 @@ An agent definition is a Markdown file: YAML frontmatter, then the system prompt
 the body. That much is shared. **Almost everything else is platform-specific**, far
 more than for a skill, so this file separates what travels from what does not.
 
-Everything is either **measured** — dated, with the method — or marked as not
-verified.
-
 ## The portable core
 
 | Key | Purpose |
@@ -19,8 +16,7 @@ must run on more than one harness.
 
 ## `name` — the identity, unlike a skill
 
-**Measured 2026-09-13** on Claude Code. Three probe agents, listed from a fresh
-non-interactive session:
+On Claude Code, three test agents, listed from a fresh non-interactive session:
 
 | File | `name:` field | Loads | Listed as |
 | --- | --- | --- | --- |
@@ -53,7 +49,7 @@ Two properties specific to agents:
   questions" do real work at selection time, when several agents partly match.
 - **Insistent phrasing is widely recommended** — "use PROACTIVELY after…", "MUST be
   invoked when…" — on the grounds that it raises automatic invocation. Plausible and
-  commonly repeated, but **not measured here**. Do not present it as a mechanism.
+  commonly repeated; do not present it as a mechanism.
 
 ## Platform-specific fields
 
@@ -92,7 +88,7 @@ check that stops an autonomous agent doing damage.
 
 ### Other platforms
 
-Not measured. Expect the same two-part shape — an identity plus a discovery text —
+Expect the same two-part shape — an identity plus a discovery text —
 and expect the capability field to be named and scoped differently or to be absent.
 Check on the target before relying on anything beyond the portable core.
 
@@ -115,6 +111,6 @@ prompt alone for something that would be damaging if ignored.
 
 - Whether any platform rejects rather than ignores unknown frontmatter keys.
 - Whether `permissionMode` and `skills` behave as documented.
-- Whether insistent description phrasing measurably changes selection.
+- Whether insistent description phrasing changes selection.
 - Precedence when the same agent name exists in two locations at once. Commonly
   stated as project-over-personal; untested here.

@@ -16,7 +16,7 @@ Two mechanisms, both resolved before the model sees the prompt:
   - inline a file's contents by referring to its path with an @ prefix
 
 Verify the exact form on the target build with a one-line probe command before
-relying on it: the form `[execute: ...]` does NOT work, measured 2026-09-13, and it
+relying on it: the form `[execute: ...]` does NOT work, and it
 fails silently by passing through as literal text. See references/syntax.md.>
 
 ## Task
