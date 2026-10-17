@@ -8,7 +8,7 @@ Dans un terminal :
 
 ```bash
 claude plugin marketplace add fsa64320/marketplace
-claude plugin install boite-a-outils@sales-marketplace
+claude plugin install ai-builder@sales-marketplace
 ```
 
 Ou dans une session Claude Code : `/plugin marketplace add fsa64320/marketplace`, puis `/plugin` pour parcourir et installer.
@@ -31,7 +31,7 @@ scripts/ajouter.py                crée un plugin ou un composant
 scripts/valider.py                contrôle la cohérence du dépôt
 ```
 
-Un plugin regroupe des composants qui vont ensemble. Tous ses composants sont préfixés par son nom (`boite-a-outils:revue-architecture`).
+Un plugin regroupe des composants qui vont ensemble. Tous ses composants sont préfixés par son nom (`ai-builder:skill-builder`).
 
 ## Ajouter du contenu
 
@@ -63,5 +63,4 @@ Chaque `plugin.json` porte une `version`. Tant qu'elle ne change pas, les utilis
 
 | Plugin | Contenu |
 | --- | --- |
-| `boite-a-outils` | Skill `revue-architecture`, agent `architecte-cloud`, commande `/boite-a-outils:adr`, hook garde-fou contre les commandes destructrices, MCP Microsoft Learn et AWS Documentation |
 | `ai-builder` | Skills `skill-builder`, `agent-builder`, `slash-command-builder` et `hooks-builder` : construire et diagnostiquer les composants Claude Code |
