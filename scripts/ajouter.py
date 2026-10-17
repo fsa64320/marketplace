@@ -9,6 +9,7 @@ Exemples :
   python3 scripts/ajouter.py hooks mon-plugin
   python3 scripts/ajouter.py mcp mon-plugin
 """
+
 import argparse
 import json
 import re
@@ -91,19 +92,35 @@ def main() -> None:
     dossier = dossier_plugin(args.plugin)
     if args.type == "skill":
         verifier_nom(args.nom)
-        creer_depuis_modele(args.plugin, MODELE / "skills" / "exemple-skill" / "SKILL.md",
-                            dossier / "skills" / args.nom / "SKILL.md", "exemple-skill", args.nom)
+        creer_depuis_modele(
+            args.plugin,
+            MODELE / "skills" / "exemple-skill" / "SKILL.md",
+            dossier / "skills" / args.nom / "SKILL.md",
+            "exemple-skill",
+            args.nom,
+        )
     elif args.type == "agent":
         verifier_nom(args.nom)
-        creer_depuis_modele(args.plugin, MODELE / "agents" / "exemple-agent.md",
-                            dossier / "agents" / f"{args.nom}.md", "exemple-agent", args.nom)
+        creer_depuis_modele(
+            args.plugin,
+            MODELE / "agents" / "exemple-agent.md",
+            dossier / "agents" / f"{args.nom}.md",
+            "exemple-agent",
+            args.nom,
+        )
     elif args.type == "commande":
         verifier_nom(args.nom)
-        creer_depuis_modele(args.plugin, MODELE / "commands" / "exemple-commande.md",
-                            dossier / "commands" / f"{args.nom}.md", "exemple-commande", args.nom)
+        creer_depuis_modele(
+            args.plugin,
+            MODELE / "commands" / "exemple-commande.md",
+            dossier / "commands" / f"{args.nom}.md",
+            "exemple-commande",
+            args.nom,
+        )
     elif args.type == "hooks":
-        creer_depuis_modele(args.plugin, MODELE / "hooks" / "hooks.json.exemple",
-                            dossier / "hooks" / "hooks.json", "", "")
+        creer_depuis_modele(
+            args.plugin, MODELE / "hooks" / "hooks.json.exemple", dossier / "hooks" / "hooks.json", "", ""
+        )
         (dossier / "scripts").mkdir(exist_ok=True)
     elif args.type == "mcp":
         cible = dossier / ".mcp.json"
@@ -113,5 +130,14 @@ def main() -> None:
         print(f"✔ Créé : {cible.relative_to(RACINE)}")
 
 
+def regenerer_catalogue() -> None:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import catalogue
+
+    catalogue.ecrire()
+    print("✔ Tableau des plugins du README régénéré")
+
+
 if __name__ == "__main__":
     main()
+    regenerer_catalogue()

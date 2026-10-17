@@ -61,6 +61,10 @@ Chaque `plugin.json` porte une `version`. Tant qu'elle ne change pas, les utilis
 
 ## Plugins
 
-| Plugin | Contenu |
-| --- | --- |
-| `ai-builder` | Skills `skill-builder`, `agent-builder`, `slash-command-builder` et `hooks-builder` : construire et diagnostiquer les composants Claude Code |
+Tableau généré par `python3 scripts/catalogue.py` à partir des manifestes ; la CI échoue s'il n'est pas à jour.
+
+<!-- plugins:start -->
+| Plugin | Version | Description | Composants |
+| --- | --- | --- | --- |
+| `ai-builder` | 1.0.2 | Skills pour construire et diagnostiquer des skills, agents, commandes slash et hooks | Skills : `agent-builder`, `hooks-builder`, `skill-builder`, `slash-command-builder` |
+<!-- plugins:end -->
