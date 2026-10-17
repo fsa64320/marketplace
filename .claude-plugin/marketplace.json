@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "fsa-marketplace",
+  "description": "Marketplace personnelle de Frederick : skills, agents, commandes slash, hooks et serveurs MCP pour Claude Code",
+  "owner": {
+    "name": "Frederick",
+    "email": "frederick.sales@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "boite-a-outils",
+      "source": "./plugins/boite-a-outils",
+      "description": "Plugin de base : un exemple de chaque composant (skill, agent, commande slash, hook, MCP) pour l'architecture cloud Azure/AWS",
+      "category": "productivity",
+      "keywords": ["architecture", "azure", "aws", "adr", "securite"]
+    }
+  ]
+}

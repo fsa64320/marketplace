@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "serveur-distant": {
+      "type": "http",
+      "url": "https://exemple.com/mcp"
+    },
+    "serveur-local": {
+      "command": "uvx",
+      "args": ["nom-du-paquet-mcp@latest"]
+    }
+  }
+}

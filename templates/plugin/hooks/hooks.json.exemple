@@ -1,0 +1,17 @@
+{
+  "description": "Renommer ce fichier en hooks.json pour activer les hooks du plugin",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/scripts/mon-hook.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

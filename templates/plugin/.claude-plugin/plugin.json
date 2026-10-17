@@ -1,0 +1,12 @@
+{
+  "name": "__NOM__",
+  "version": "0.1.0",
+  "description": "__DESCRIPTION__",
+  "author": {
+    "name": "Frederick",
+    "email": "frederick.sales@gmail.com"
+  },
+  "repository": "https://github.com/fsa64320/marketplace",
+  "license": "MIT",
+  "keywords": []
+}

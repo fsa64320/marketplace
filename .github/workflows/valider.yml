@@ -1,0 +1,38 @@
+name: Valider la marketplace
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  valider:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Règles du dépôt
+        run: python3 scripts/valider.py
+
+      - name: Installer Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Valider la marketplace (claude plugin validate)
+        run: claude plugin validate . --strict
+
+      - name: Valider chaque plugin
+        run: |
+          for dossier in plugins/*/; do
+            echo "::group::$dossier"
+            claude plugin validate "$dossier" --strict
+            echo "::endgroup::"
+          done
