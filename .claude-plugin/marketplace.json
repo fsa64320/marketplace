@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "fsa-marketplace",
+  "name": "sales-marketplace",
   "description": "Marketplace personnelle de Frederick : skills, agents, commandes slash, hooks et serveurs MCP pour Claude Code",
   "owner": {
     "name": "Frederick",

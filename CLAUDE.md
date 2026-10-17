@@ -1,4 +1,4 @@
-# Règles du dépôt fsa-marketplace
+# Règles du dépôt sales-marketplace
 
 Ce dépôt est une marketplace de plugins Claude Code. Quand tu y ajoutes ou modifies du contenu :
 

@@ -1,4 +1,4 @@
-# fsa-marketplace
+# sales-marketplace
 
 Marketplace personnelle de plugins pour Claude Code : skills, agents, commandes slash, hooks et serveurs MCP.
 
@@ -8,12 +8,12 @@ Dans un terminal :
 
 ```bash
 claude plugin marketplace add fsa64320/marketplace
-claude plugin install boite-a-outils@fsa-marketplace
+claude plugin install boite-a-outils@sales-marketplace
 ```
 
 Ou dans une session Claude Code : `/plugin marketplace add fsa64320/marketplace`, puis `/plugin` pour parcourir et installer.
 
-Mettre à jour après un push : `claude plugin marketplace update fsa-marketplace`.
+Mettre à jour après un push : `claude plugin marketplace update sales-marketplace`.
 
 ## Organisation
 
