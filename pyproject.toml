@@ -1,0 +1,54 @@
+# Configuration de l'outillage Python du dépôt (ruff, bandit).
+#
+# Ce fichier ne définit AUCUN paquet. Un script livré avec un skill qui a besoin de
+# dépendances tierces porte son propre pyproject.toml + uv.lock dans
+# plugins/<plugin>/skills/<skill>/scripts/.
+#
+# Repris de sta-ai-tools.
+
+[tool.ruff]
+line-length = 120
+# Version la plus basse visée par les scripts : ruff n'applique pas de conseil
+# UP qui ne serait pas sûr partout.
+target-version = "py311"
+extend-exclude = [".venv", "**/.venv"]
+
+[tool.ruff.lint]
+#   E, F = erreurs pyflakes/pycodestyle   I = tri des imports
+#   UP = pyupgrade   B = bugbear   SIM = simplifications
+# plus un gate de taille sur chaque fonction, pour qu'un script reste lisible par le
+# prochain contributeur (et le prochain agent) :
+#   C901 = complexité McCabe   PLR0912/PLR0915 = trop de branches/d'instructions
+#   PLR0913 = trop d'arguments
+# Une fonction qui dépasse se découpe : pas de noqa, pas de relèvement des seuils.
+# Méthode : plugins/ai-builder/skills/skill-builder/references/scripts.md
+select = ["E", "F", "I", "UP", "B", "SIM", "C901", "PLR0912", "PLR0913", "PLR0915"]
+ignore = [
+    # Appels de fonction dans les valeurs par défaut (click.option, etc.)
+    "B008",
+    # try/except/pass explicite préféré à contextlib.suppress
+    "SIM105",
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 12
+
+[tool.ruff.lint.pylint]
+# max-branches (12) et max-statements (50) gardent les valeurs par défaut de ruff.
+max-args = 6
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.bandit]
+exclude_dirs = [".venv", "tests", "scripts/.venv"]
+skips = [
+    # B101 : assert — normal dans les tests.
+    "B101",
+    # B404 : simple import de subprocess, informatif. B603/B607 restent actifs
+    # pour les vrais risques.
+    "B404",
+    # B603 : subprocess sans shell=True — c'est la forme sûre ; chaque appel du
+    # dépôt passe une liste d'arguments statique.
+    "B603",
+]

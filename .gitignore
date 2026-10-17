@@ -5,3 +5,11 @@ __pycache__/
 .mcpb-cache/
 node_modules/
 .claude/settings.local.json
+.ruff_cache/
+.pytest_cache/
+Thumbs.db
+# Jetons et secrets
+**/.env
+**/token*.txt
+**/*_token.txt
+**/*.token

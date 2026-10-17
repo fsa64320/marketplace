@@ -1,38 +1,100 @@
 name: Valider la marketplace
 
+# Les mêmes portes que CONTRIBUTING.md demande de lancer avant de pousser.
+# Toute constatation fait échouer le job : on corrige, on n'explique pas.
+
 on:
+  pull_request:
   push:
     branches: [main]
-  pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: valider-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  valider:
+  structure:
+    name: Structure et versions
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Règles du dépôt
+        run: python3 scripts/valider.py
+
+      - name: Version changée pour chaque plugin modifié
+        if: github.event_name == 'pull_request'
+        run: python3 scripts/valider.py --base "origin/${{ github.base_ref }}"
+
+      - name: Tableau des plugins du README à jour
+        run: python3 scripts/catalogue.py --check
+
+  claude-code:
+    name: claude plugin validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
 
-      - name: Règles du dépôt
-        run: python3 scripts/valider.py
-
       - name: Installer Claude Code
         run: npm install -g @anthropic-ai/claude-code
 
-      - name: Valider la marketplace (claude plugin validate)
+      - name: Marketplace
         run: claude plugin validate . --strict
 
-      - name: Valider chaque plugin
+      - name: Chaque plugin
         run: |
           for dossier in plugins/*/; do
             echo "::group::$dossier"
             claude plugin validate "$dossier" --strict
             echo "::endgroup::"
           done
+
+  skills:
+    name: Lint des skills
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: lint_skill.py sur chaque skill
+        run: |
+          statut=0
+          for skill in plugins/*/skills/*/; do
+            echo "::group::$skill"
+            python3 plugins/ai-builder/skills/skill-builder/scripts/lint_skill.py "$skill" || statut=1
+            echo "::endgroup::"
+          done
+          exit $statut
+
+  python:
+    name: Python (ruff, bandit)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: ruff check
+        run: uvx ruff check .
+
+      - name: ruff format
+        run: uvx ruff format --check .
+
+      - name: bandit
+        run: uvx --python 3.12 bandit -c pyproject.toml -r scripts plugins .github/scripts
