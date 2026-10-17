@@ -97,4 +97,4 @@ jobs:
         run: uvx ruff format --check .
 
       - name: bandit
-        run: uvx --python 3.12 bandit -c pyproject.toml -r scripts plugins
+        run: uvx --python 3.12 bandit -c pyproject.toml -r scripts plugins .github/scripts

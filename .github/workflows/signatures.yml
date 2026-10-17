@@ -1,0 +1,33 @@
+name: Signatures des commits
+
+# Consultatif : signale chaque commit non vérifié d'une PR avec sa cause et l'action
+# qui la corrige, sans bloquer (GitHub Free n'exige rien sur un dépôt privé).
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: signatures-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  diagnostic:
+    name: Diagnostic des signatures
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+          persist-credentials: false
+
+      - name: Diagnostiquer chaque commit non vérifié
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          bash .github/scripts/verifier_signatures.sh \
+            "repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/commits"
