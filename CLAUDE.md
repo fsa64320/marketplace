@@ -1,14 +1,87 @@
-# Règles du dépôt sales-marketplace
+# CLAUDE.md
 
-Ce dépôt est une marketplace de plugins Claude Code. Quand tu y ajoutes ou modifies du contenu :
+Guide pour Claude Code quand il travaille dans ce dépôt.
 
-- Tout composant (skill, agent, commande, hook, MCP) vit dans un plugin sous `plugins/<plugin>/`, jamais à la racine.
-- Pour créer un plugin ou un composant, utilise `python3 scripts/ajouter.py` : il applique le modèle de `templates/plugin/` et déclare le plugin dans `.claude-plugin/marketplace.json`.
-- Noms en kebab-case. Le `name` d'un SKILL.md est identique au nom de son dossier ; le `name` d'un plugin.json est identique à son entrée dans marketplace.json.
-- La `description` d'un skill ou d'un agent dit ce qu'il fait ET quand l'utiliser : c'est elle qui le déclenche.
-- Les scripts appelés par les hooks ou les MCP se référencent via `${CLAUDE_PLUGIN_ROOT}`, jamais par chemin absolu.
-- Python : installer les paquets avec `uv` (pip fonctionne mal derrière le proxy) ; les serveurs MCP Python se lancent avec `uvx`.
-- Pas de secret en clair dans `.mcp.json` ou `plugin.json` : utiliser `userConfig` avec `"sensitive": true`.
-- Incrémente la `version` du plugin.json modifié.
-- Avant de committer : `python3 scripts/valider.py` puis `claude plugin validate . --strict` et `claude plugin validate plugins/<plugin> --strict`.
-- Mets à jour le tableau « Plugins » du README.
+## Ce qu'est ce dépôt
+
+`fsa64320/marketplace` est la marketplace Claude Code **sales-marketplace** de Frederick : un catalogue de plugins (skills, agents, commandes slash, hooks, serveurs MCP). Il n'y a ni application ni runtime : chaque dossier de `plugins/` est un plugin que Claude Code installe depuis ce dépôt (`claude plugin marketplace add fsa64320/marketplace`). Le catalogue est `.claude-plugin/marketplace.json`.
+
+Le dépôt est privé et **en français** : documentation, commits, PR, descriptions des skills.
+
+`CONTRIBUTING.md` porte les règles du contributeur humain, `AGENTS.md` celles d'un agent (worktree, portes, ce qu'il ne touche pas). Les conventions de ces trois fichiers doivent rester d'accord.
+
+### Flux
+
+`main` ne reçoit **aucun push direct** : branche `type/description-courte` → PR → CI verte → merge en **squash** par Frederick, ou par Claude uniquement sur sa demande explicite. Le dépôt est sur GitHub Free, qui ne protège pas une branche de dépôt privé : les garde-fous sont locaux (`.githooks/pre-push`, hook de `.claude/settings.json`). Les signatures de commits sont diagnostiquées sur chaque PR, sans bloquer.
+
+## Commandes
+
+Derrière le proxy, pas de `pip` : tout passe par `uv` / `uvx`.
+
+Les portes que la CI relance, à zéro constat avant de pousser :
+
+```bash
+python3 scripts/valider.py --base origin/main
+python3 scripts/catalogue.py --check
+claude plugin validate . --strict && claude plugin validate plugins/<plugin> --strict
+python3 plugins/ai-builder/skills/skill-builder/scripts/lint_skill.py plugins/<plugin>/skills/<skill>
+uvx ruff check . && uvx ruff format --check .
+uvx --python 3.12 bandit -c pyproject.toml -r scripts plugins .github/scripts
+```
+
+Créer un plugin ou un composant (applique `templates/plugin/` et régénère le tableau du README) :
+
+```bash
+python3 scripts/ajouter.py plugin <plugin> "description"
+python3 scripts/ajouter.py skill|agent|commande <plugin> <nom>
+python3 scripts/ajouter.py hooks|mcp <plugin>
+```
+
+Régénérer le tableau des plugins du README après toute modification d'un manifeste ou d'un composant : `python3 scripts/catalogue.py`.
+
+Tester l'installation sans toucher à sa configuration : `HOME=$(mktemp -d) claude plugin marketplace add . && HOME=… claude plugin install <plugin>@sales-marketplace`.
+
+CI : `.github/workflows/valider.yml` (structure et versions, `claude plugin validate`, `lint_skill.py`, ruff, bandit) et `signatures.yml` (consultatif).
+
+## Modèle de plugin
+
+| Composant | Emplacement | Fichier requis | Règles |
+|---|---|---|---|
+| Plugin | `plugins/<plugin>/` | `.claude-plugin/plugin.json` | `name` = nom du dossier = entrée de `marketplace.json` ; `version` présente |
+| Skill | `skills/<skill>/` | `SKILL.md` (frontmatter `name`, `description`) | `name` = nom du dossier ; annexes dans `references/`, `assets/`, `scripts/` |
+| Agent | `agents/<agent>.md` | frontmatter `name`, `description` (+ `tools`, `model`) | outils au plus juste |
+| Commande | `commands/<commande>.md` | frontmatter `description` (+ `argument-hint`) | appelée en `/<plugin>:<commande>` |
+| Hook | `hooks/hooks.json` | objet enveloppé dans une clé `hooks` | scripts dans `scripts/`, appelés via `${CLAUDE_PLUGIN_ROOT}` |
+| MCP | `.mcp.json` | objet avec une clé `mcpServers` | serveurs Python lancés par `uvx` ; secrets en `userConfig` |
+
+### Règles qui mordent
+
+- **Le nom du dossier fait l'identité.** Le `name` d'un SKILL.md égale son dossier ; le `name` d'un plugin.json égale son dossier et son entrée dans `marketplace.json`. Tout en kebab-case. Un écart ne fait pas forcément échouer le chargement : le composant est simplement appelé par un nom et se décrit par un autre.
+- **Bump de `version`** du plugin à tout changement significatif : sans lui, les postes déjà installés ne reçoivent rien. `valider.py --base origin/main` refuse un plugin modifié dont la version n'a pas bougé.
+- **La description déclenche.** Elle dit ce que fait le composant, quand l'utiliser et les phrases que l'utilisateur tape. Jamais de chevrons `< >` : claude.ai les prend pour des balises et refuse la description.
+- **Aucun `SKILL.md` imbriqué.** Un `SKILL.md` sous `assets/` est chargé comme un skill à part : un gabarit s'appelle `SKILL.md.template`.
+- **Chemins relatifs au dossier du skill** dans un SKILL.md ; `${CLAUDE_PLUGIN_ROOT}` dans les hooks et les MCP. Jamais de chemin absolu.
+- **Pas de secret en clair** dans `.mcp.json` ou `plugin.json` : `userConfig` avec `"sensitive": true`.
+- **Pas d'`apm.yml`** : la source de vérité est `SKILL.md` + `plugin.json`, la CI refuse le fichier.
+- Toute modification d'un manifeste ou d'un composant change le tableau du README : `python3 scripts/catalogue.py`.
+
+## Scripts livrés avec un skill
+
+Le code exécutable va dans `skills/<skill>/scripts/`. Bibliothèque standard de préférence ; s'il faut des paquets tiers, le dossier `scripts/` porte son propre `pyproject.toml` + `uv.lock` et s'exécute par `uv run --project <dossier scripts>`. Le `pyproject.toml` racine ne configure que ruff et bandit.
+
+Ruff borne la taille de chaque fonction : complexité McCabe 12, 12 branches, 50 instructions, 6 arguments (`C901`, `PLR0912`, `PLR0915`, `PLR0913`). Une fonction qui dépasse se découpe : jamais de `noqa`, jamais de relèvement des seuils. Méthode : `plugins/ai-builder/skills/skill-builder/references/scripts.md`. Bandit tourne sur `scripts/`, `plugins/` et `.github/scripts/` ; un exécutable s'appelle par son chemin résolu (`shutil.which`), pas par un nom nu.
+
+## Style des skills
+
+- Des étapes numérotées, chacune une action concrète avec la commande, l'option ou le champ exact. Une étape qui énonce une intention n'est pas une étape.
+- S'adresser à l'agent, pas à un lecteur. Pas de prérequis, de difficulté, de durée : c'est chargé à chaque activation et ne change aucun comportement.
+- Le format de sortie se **montre** (le vrai tableau), il ne se décrit pas.
+- Une section « Ce que ce skill ne fait pas » renvoie au skill voisin qui le fait.
+- Les gabarits et exemples longs sont de vrais fichiers sous `assets/`, jamais des blocs de code dans le corps : un bloc imbriqué ferme le bloc extérieur et avale silencieusement la suite.
+- Les descriptions sont en français. Les skills importés gardent la description de leur source.
+
+Pour écrire ou diagnostiquer un composant : `ai-builder:skill-builder`, `ai-builder:agent-builder`, `ai-builder:slash-command-builder`, `ai-builder:hooks-builder`.
+
+## Origine d'ai-builder
+
+Les quatre skills d'`ai-builder` viennent de `sta-ai-tools/skills` (dépôt d'équipe, catalogue APM). Ils ont été adaptés ici : gabarits de `skill-builder` renommés en `SKILL.md.template`, `apm.yml` supprimés. Une correction faite ici se reporte dans la source, et inversement, sinon la prochaine synchronisation l'écrase.
