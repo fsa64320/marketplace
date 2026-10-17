@@ -64,3 +64,4 @@ Chaque `plugin.json` porte une `version`. Tant qu'elle ne change pas, les utilis
 | Plugin | Contenu |
 | --- | --- |
 | `boite-a-outils` | Skill `revue-architecture`, agent `architecte-cloud`, commande `/boite-a-outils:adr`, hook garde-fou contre les commandes destructrices, MCP Microsoft Learn et AWS Documentation |
+| `ai-builder` | Skills `skill-builder`, `agent-builder`, `slash-command-builder` et `hooks-builder` : construire et diagnostiquer les composants Claude Code |

@@ -1,0 +1,19 @@
+{
+  "name": "ai-builder",
+  "version": "1.0.0",
+  "description": "Skills pour construire et diagnostiquer des skills, agents, commandes slash et hooks",
+  "author": {
+    "name": "Frederick",
+    "email": "frederick.sales@gmail.com"
+  },
+  "repository": "https://github.com/fsa64320/marketplace",
+  "license": "proprietary",
+  "keywords": [
+    "skills",
+    "agents",
+    "slash-commands",
+    "hooks",
+    "authoring"
+  ],
+  "displayName": "AI Builder"
+}

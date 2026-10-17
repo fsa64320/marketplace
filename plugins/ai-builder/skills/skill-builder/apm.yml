@@ -1,0 +1,20 @@
+name: skill-builder
+version: 3.1.1
+description: >-
+  Builds an agent skill from a described procedure and diagnoses one that does
+  not load or does not trigger: the frontmatter a runtime reads, a body
+  written as a procedure, the split into references/, and a lint plus a load
+  test before hand-back. Platform-independent — the transport places the
+  files. Use when the user asks "create a skill", "write a skill", "make me a
+  skill for this", "turn this repetitive task into a skill", "what goes in
+  SKILL.md", "why is my skill not triggering", "why does my skill not load",
+  "review my SKILL.md", "how do I restrict which tools a skill can use", "will
+  this skill work on another platform". Also triggers on « crée-moi un skill
+  », « pourquoi mon skill ne se déclenche pas », « relis mon SKILL.md ».
+author: Frederick SALES
+license: proprietary
+type: skill
+
+dependencies:
+  apm: []
+  mcp: []

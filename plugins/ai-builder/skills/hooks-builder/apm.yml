@@ -1,0 +1,21 @@
+name: hooks-builder
+version: 1.0.2
+description: >-
+  Builds an event-driven hook — automation that fires on a harness event to
+  observe, block or modify an action — and diagnoses one that never fires or
+  blocks the wrong thing. Covers choosing the event, fail-safe defaults, the
+  injection risks of running shell with the user's rights, and testing with
+  mock input. Least portable of the four builders, and says so. Use when the
+  user asks "create a hook", "block dangerous commands", "run a formatter
+  automatically", "audit every tool call", "validate before writing a file",
+  "why is my hook not firing", "why does my hook not block anything", "should
+  this be a hook or a skill". Also triggers on « crée-moi un hook », «
+  pourquoi mon hook ne bloque pas », « automatiser une vérification avant
+  écriture ».
+author: Frederick SALES
+license: proprietary
+type: skill
+
+dependencies:
+  apm: []
+  mcp: []

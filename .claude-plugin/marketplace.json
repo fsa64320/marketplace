@@ -12,7 +12,26 @@
       "source": "./plugins/boite-a-outils",
       "description": "Plugin de base : un exemple de chaque composant (skill, agent, commande slash, hook, MCP) pour l'architecture cloud Azure/AWS",
       "category": "productivity",
-      "keywords": ["architecture", "azure", "aws", "adr", "securite"]
+      "keywords": [
+        "architecture",
+        "azure",
+        "aws",
+        "adr",
+        "securite"
+      ]
+    },
+    {
+      "name": "ai-builder",
+      "source": "./plugins/ai-builder",
+      "description": "Skills pour construire et diagnostiquer des skills, agents, commandes slash et hooks",
+      "category": "development",
+      "keywords": [
+        "skills",
+        "agents",
+        "slash-commands",
+        "hooks",
+        "authoring"
+      ]
     }
   ]
 }
