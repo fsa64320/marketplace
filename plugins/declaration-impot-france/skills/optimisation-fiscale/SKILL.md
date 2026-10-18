@@ -21,11 +21,11 @@ Il part de la situation réelle du foyer, retient les deux ou trois leviers qui 
 ## Étapes
 
 1. Établis la situation : TMI (ou revenu imposable et nombre de parts), nature et montant des revenus du capital, revenus fonciers, versements PER possibles. Pose en une seule question ce qui manque ; sans TMI, ne chiffre rien.
-2. Lis `references/baremes.md`. Si l'année des revenus diffère de celle des barèmes, dis-le et vérifie les taux concernés avant tout calcul.
+2. Applique d'abord le skill `verification-legislation` du plugin : il fixe l'année des revenus et produit la fiche de vérification qui donne chaque taux, seuil et numéro de case à utiliser. Chiffre uniquement avec ses valeurs.
 3. Retiens dans la liste ci-dessous uniquement les leviers qui s'appliquent au foyer, au plus trois.
 4. Chiffre chaque levier retenu en euros, avec le calcul posé.
 5. Donne pour chaque levier l'action concrète : case, formulaire, date limite ou démarche.
-6. Réponds dans ce format.
+6. Réponds dans ce format (les taux de l'exemple sont illustratifs).
 
 **Situation** : TMI 30 %, 4 000 € de dividendes, 2 000 € de versements PER possibles.
 
@@ -44,7 +44,7 @@ Il part de la situation réelle du foyer, retient les deux ou trois leviers qui 
 4. **PEA** : exonération d'IR après cinq ans, PS dus. Face au compte-titres, l'avantage porte sur l'IR et la capitalisation sans impôt.
 5. **LMNP** : compare micro-BIC (abattement selon le type de location) et réel (charges et amortissements). Signale la réintégration des amortissements dans la plus-value à la revente.
 6. **SCI à l'IS ou à l'IR** : l'IS permet l'amortissement et un taux réduit, mais la plus-value de cession est taxée sur la valeur nette comptable et les distributions supportent le PFU.
-7. **Dons, emploi à domicile, garde d'enfants** : réduction ou crédit selon les taux du fichier de barèmes.
+7. **Dons, emploi à domicile, garde d'enfants** : réduction ou crédit selon les taux de la fiche de vérification.
 
 ## Ce que ce skill ne fait pas
 

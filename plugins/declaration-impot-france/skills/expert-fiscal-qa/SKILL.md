@@ -20,9 +20,8 @@ Il répond à une question précise de fiscalité française, règle et article 
 
 ## Étapes
 
-1. Repère l'année fiscale visée. Par défaut, prends les revenus de l'année écoulée, déclarés l'année en cours, et écris-le dans la réponse (« revenus 2025, déclarés en 2026 »).
-2. Lis `references/baremes.md` dès que la réponse cite un taux, un plafond ou un seuil. Si l'année visée n'est pas celle du fichier, vérifie le chiffre (recherche web si disponible, sinon impots.gouv.fr) et dis-le.
-3. Réponds dans ce format.
+1. Applique d'abord le skill `verification-legislation` du plugin : il fixe l'année des revenus et produit la fiche de vérification qui donne chaque taux, seuil et numéro de case à utiliser. Écris l'année retenue dans la réponse (« revenus N, déclarés en N+1 »).
+2. Réponds dans ce format.
 
 **Réponse courte** : une ou deux phrases qui répondent à la question.
 
@@ -34,7 +33,7 @@ Il répond à une question précise de fiscalité française, règle et article 
 
 **Attention** : la limite ou l'exception qui change la réponse.
 
-4. Si la situation décrite est ambiguë ou atypique (non-résident, montage de holding, succession, contrôle fiscal), dis que la réponse ne suffit pas et oriente vers un expert-comptable ou le service des impôts.
+3. Si la situation décrite est ambiguë ou atypique (non-résident, montage de holding, succession, contrôle fiscal), dis que la réponse ne suffit pas et oriente vers un expert-comptable ou le service des impôts.
 
 ## Domaines
 

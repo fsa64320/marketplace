@@ -1,6 +1,6 @@
 # Format de réponse — analyse de document fiscal
 
-Produis les 12 blocs ci-dessous, dans cet ordre et avec cette mise en forme. Remplace chaque `0,00 €` par le montant lu dans le document et `AAAA` par l'année des revenus.
+Produis les 12 blocs ci-dessous, dans cet ordre et avec cette mise en forme, après la fiche de vérification. Les taux, seuils et libellés de cases écrits ici sont des exemples : remplace-les par ceux de la fiche. Remplace chaque `0,00 €` par le montant lu dans le document et `AAAA` par l'année des revenus.
 
 ---
 
@@ -264,7 +264,7 @@ Analyser si l'option est avantageuse en fonction du TMI estimé du foyer.
 | **Crédit d'impôt 2CK** | | **– 0,00 €** | **– 0,00 €** |
 | **Crédit d'impôt 8TK** | | **– 0,00 €** | **– 0,00 €** |
 
-> Taux des prélèvements sociaux (PS) : prends celui de l'année des revenus dans `references/baremes.md` (dossier du skill).
+> Taux des prélèvements sociaux (PS) : celui de la fiche de vérification pour ce type de revenu et cette année.
 >
 > Estimation indicative. Le calcul exact dépend de l'ensemble des revenus du foyer (salaires, pensions, autres revenus), du quotient familial et des charges déductibles éventuelles.
 
