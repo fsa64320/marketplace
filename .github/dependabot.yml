@@ -1,0 +1,14 @@
+# Mises à jour des actions utilisées par les workflows (.github/workflows/).
+# Une PR groupée par mois ; elle passe la CI comme toute PR.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
+    commit-message:
+      prefix: ci
+    labels: []

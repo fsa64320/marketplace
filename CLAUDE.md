@@ -6,13 +6,17 @@ Guide pour Claude Code quand il travaille dans ce dépôt.
 
 `fsa64320/marketplace` est la marketplace Claude Code **sales-marketplace** de Frederick : un catalogue de plugins (skills, agents, commandes slash, hooks, serveurs MCP). Il n'y a ni application ni runtime : chaque dossier de `plugins/` est un plugin que Claude Code installe depuis ce dépôt (`claude plugin marketplace add fsa64320/marketplace`). Le catalogue est `.claude-plugin/marketplace.json`.
 
-Le dépôt est privé et **en français** : documentation, commits, PR, descriptions des skills.
+Le dépôt est public (pour servir la page GitHub Pages du catalogue) et **en français** : documentation, commits, PR, descriptions des skills.
 
 `CONTRIBUTING.md` porte les règles du contributeur humain, `AGENTS.md` celles d'un agent (worktree, portes, ce qu'il ne touche pas). Les conventions de ces trois fichiers doivent rester d'accord.
 
 ### Flux
 
-`main` ne reçoit **aucun push direct** : branche `type/description-courte` → PR → CI verte → merge en **squash** par Frederick, ou par Claude uniquement sur sa demande explicite. Le dépôt est sur GitHub Free, qui ne protège pas une branche de dépôt privé : les garde-fous sont locaux (`.githooks/pre-push`, hook de `.claude/settings.json`). Les signatures de commits sont diagnostiquées sur chaque PR, sans bloquer.
+`main` ne reçoit **aucun push direct** : branche `type/description-courte` → PR → CI verte → merge en **squash** par Frederick, ou par Claude uniquement sur sa demande explicite. GitHub l'impose par le ruleset « Protection de main » (Settings > Rules > Rulesets) : PR obligatoire, merge en squash seul, les quatre jobs de `valider.yml` verts, ni force-push ni suppression, sans contournement possible, même pour Frederick. Les hooks locaux (`.githooks/pre-push`, hook de `.claude/settings.json`) refusent le push plus tôt, avec le bon message. Les signatures de commits sont diagnostiquées sur chaque PR, sans bloquer.
+
+Sécurité du dépôt public : détection de secrets avec blocage au push, alertes Dependabot, mises à jour mensuelles des actions des workflows (`.github/dependabot.yml`), approbation exigée pour les workflows de toute PR externe, jeton des workflows en lecture seule. Aucun secret ne va dans le dépôt ni dans son historique : il est public.
+
+Renommer un job de `valider.yml` casse le ruleset (la vérification attendue ne se présente plus et le merge reste bloqué) : renomme aussi la vérification requise dans le ruleset.
 
 ## Commandes
 

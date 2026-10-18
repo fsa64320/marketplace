@@ -26,7 +26,9 @@ Puis :
 5. **Ne merge pas.** Frederick merge, ou te le demande explicitement ; dans ce cas `gh pr merge <n> --squash`, que le hook de `.claude/settings.json` soumet à sa confirmation.
 6. Une fois la PR mergée : `git worktree remove ../marketplace-<tâche>`.
 
-Jamais de push vers `main` : `.githooks/pre-push` et le hook Claude Code le refusent. Ne contourne ni l'un ni l'autre (`AUTORISER_PUSH_MAIN`, `--no-verify`) : ce sont les seules protections de `main`, GitHub Free n'en offrant aucune sur un dépôt privé.
+Jamais de push vers `main` : `.githooks/pre-push` et le hook Claude Code le refusent. Ne contourne ni l'un ni l'autre (`AUTORISER_PUSH_MAIN`, `--no-verify`) ; GitHub refuse de toute façon le push par le ruleset de `main`. Ne modifie ni ne désactive ce ruleset.
+
+Le dépôt est public : aucun secret, jeton ou donnée personnelle dans un fichier, un commit ou un message de PR.
 
 Une décision qui revient à Frederick surgit en route (périmètre d'un nouveau plugin, compromis de sécurité, deux conceptions incompatibles, un accès qui te manque) : arrête-toi et pose-lui la question plutôt que de trancher.
 

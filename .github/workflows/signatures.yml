@@ -1,7 +1,7 @@
 name: Signatures des commits
 
 # Consultatif : signale chaque commit non vérifié d'une PR avec sa cause et l'action
-# qui la corrige, sans bloquer (GitHub Free n'exige rien sur un dépôt privé).
+# qui la corrige, sans bloquer (choix délibéré : le ruleset de main ne les exige pas).
 
 on:
   pull_request:
