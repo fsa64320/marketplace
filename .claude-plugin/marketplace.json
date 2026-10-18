@@ -65,6 +65,22 @@
       "name": "navigateur-web",
       "source": "./plugins/navigateur-web",
       "description": "Navigation web pilotée par agent-browser : ouvrir, lire, remplir et capturer des pages, avec installation et configuration de l'outil au premier usage"
+    },
+    {
+      "name": "cse-totalenergies",
+      "source": "./plugins/cse-totalenergies",
+      "description": "Informations sur le CSE TotalEnergies Pau et le CSEC UES AGSH : solde de subvention, voyages et séjours, aides et prêts, échéances, préparation de demandes",
+      "category": "productivity",
+      "keywords": [
+        "cse",
+        "csec",
+        "totalenergies",
+        "pau",
+        "subventions",
+        "voyages",
+        "prets",
+        "aides"
+      ]
     }
   ]
 }
