@@ -37,7 +37,16 @@ Il fixe l'année des revenus, confronte les valeurs de référence du plugin à 
    - date chaque source : une page sans date de mise à jour postérieure à la loi concernée ne confirme pas une valeur récente ;
    - une autre source sert seulement à repérer une réforme : cherche-la ensuite sur une source officielle ;
    - cherche aussi la loi de finances et la LFSS de l'année de déclaration, pour repérer un dispositif créé, supprimé ou modifié.
-7. Si le connecteur data.gouv.fr est disponible, interroge aussi OpenFisca, le moteur de calcul socio-fiscal référencé au catalogue (recherche de dataservices « openfisca ») : lis `https://api.fr.openfisca.org/latest/parameter/<identifiant>`, par exemple `impot_revenu.bareme_ir_depuis_1945.bareme`. Une valeur OpenFisca datée et portant sa référence légale vaut ✅. Une valeur absente ou plus ancienne que l'année visée ne prouve rien : OpenFisca peut avoir du retard sur une loi récente.
+7. Si les outils du serveur MCP `bensaid-avocats` du plugin sont disponibles, complète l'étape 6 avec eux :
+   - `openfisca_parameter` : barèmes et taux, avec `date` au 1er janvier de l'année des revenus (ex. `name` = `impot_revenu.bareme_ir_depuis_1945.bareme`, `date` = `2025-01-01`) ;
+   - `legifrance_article` : texte en vigueur d'un article du CGI ou du LPF et sa date d'entrée en vigueur (ex. `code` = `cgi`, `article` = `200 A`) ;
+   - `bofip_search` puis `bofip_get` : règle d'interprétation ; ce corpus ne contient que les versions en vigueur, il ne vaut donc pas pour une année passée ;
+   - `conventions_search` puis `conventions_article` : traitement des revenus de source étrangère par pays (crédit d'impôt ou taux effectif, 2047).
+   Règles d'usage :
+   - n'envoie dans une requête que des termes juridiques ou des noms de paramètres, jamais un montant, un nom ou une donnée de l'utilisateur ;
+   - une valeur datée qui porte sa référence légale et couvre l'année visée vaut ✅ ;
+   - une valeur absente, ou plus ancienne que l'année visée, ne prouve rien : le corpus du serveur et OpenFisca peuvent avoir du retard sur une loi récente ; garde alors le résultat de l'étape 6 ;
+   - ce serveur est un service tiers gratuit : s'il ne répond pas, continue sans lui et ne le signale que si l'étape 6 n'a rien donné.
 8. Attribue un statut à chaque élément : ✅ confirmé par une source officielle de l'année, ⚠️ trouvé hors source officielle ou sources contradictoires, ❌ non vérifiable (pas d'outil web, ou rien trouvé pour cette année) ; dans ce dernier cas garde la valeur de référence et indique son année.
 9. Place la fiche en tête de ta réponse, au format de `assets/fiche-verification.md`.
 10. Dans le reste de la réponse, accole « (à confirmer) » à tout chiffre décisif ⚠️ ou ❌, et ne présente pas un résultat qui en dépend comme certain.

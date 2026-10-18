@@ -26,7 +26,7 @@ Origine : LFSS 2026, CSG de 9,2 % à 10,6 % sur les revenus du patrimoine et de 
 | de 84 578 € à 181 917 € | 41 % |
 | au-delà de 181 917 € | 45 % |
 
-Vérifié le 18/10/2026 dans OpenFisca (catalogue data.gouv.fr), paramètre `impot_revenu.bareme_ir_depuis_1945.bareme`, valeur au 01/01/2025, référence loi n° 2026-103 (loi de finances 2026).
+Vérifié le 18/10/2026 dans OpenFisca, paramètre `impot_revenu.bareme_ir_depuis_1945.bareme`, valeur au 01/01/2025, référence loi n° 2026-103 (loi de finances 2026).
 
 ## Option barème pour les revenus du capital (case 2OP)
 
