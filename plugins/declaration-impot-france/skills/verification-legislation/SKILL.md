@@ -32,10 +32,11 @@ Il fixe l'année des revenus, confronte les valeurs de référence du plugin à 
    - tiens pour officielles impots.gouv.fr, bofip.impots.gouv.fr, service-public.fr et legifrance.gouv.fr ;
    - une autre source sert seulement à repérer une réforme : cherche-la ensuite sur une source officielle ;
    - cherche aussi la loi de finances et la LFSS de l'année de déclaration, pour repérer un dispositif créé, supprimé ou modifié.
-7. Attribue un statut à chaque élément : ✅ confirmé par une source officielle de l'année, ⚠️ trouvé hors source officielle ou sources contradictoires, ❌ non vérifiable (pas d'outil web, ou rien trouvé pour cette année) ; dans ce dernier cas garde la valeur de référence et indique son année.
-8. Place la fiche en tête de ta réponse, au format de `assets/fiche-verification.md`.
-9. Dans le reste de la réponse, accole « (à confirmer) » à tout chiffre décisif ⚠️ ou ❌, et ne présente pas un résultat qui en dépend comme certain.
-10. Si une valeur vérifiée diffère de la valeur de référence, utilise la valeur vérifiée et termine la réponse par : « Valeurs de référence du plugin à mettre à jour dans fsa64320/marketplace : [élément] [ancienne valeur] → [nouvelle valeur] ([source]). » Ne modifie aucun fichier du plugin installé.
+7. Si le connecteur data.gouv.fr est disponible, interroge aussi OpenFisca, le moteur de calcul socio-fiscal référencé au catalogue (recherche de dataservices « openfisca ») : lis `https://api.fr.openfisca.org/latest/parameter/<identifiant>`, par exemple `impot_revenu.bareme_ir_depuis_1945.bareme`. Une valeur OpenFisca datée et portant sa référence légale vaut ✅. Une valeur absente ou plus ancienne que l'année visée ne prouve rien : OpenFisca peut avoir du retard sur une loi récente.
+8. Attribue un statut à chaque élément : ✅ confirmé par une source officielle de l'année, ⚠️ trouvé hors source officielle ou sources contradictoires, ❌ non vérifiable (pas d'outil web, ou rien trouvé pour cette année) ; dans ce dernier cas garde la valeur de référence et indique son année.
+9. Place la fiche en tête de ta réponse, au format de `assets/fiche-verification.md`.
+10. Dans le reste de la réponse, accole « (à confirmer) » à tout chiffre décisif ⚠️ ou ❌, et ne présente pas un résultat qui en dépend comme certain.
+11. Si une valeur vérifiée diffère de la valeur de référence, utilise la valeur vérifiée et termine la réponse par : « Valeurs de référence du plugin à mettre à jour dans fsa64320/marketplace : [élément] [ancienne valeur] → [nouvelle valeur] ([source]). » Ne modifie aucun fichier du plugin installé.
 
 ## Ce que ce skill ne fait pas
 

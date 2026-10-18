@@ -10,7 +10,7 @@ Ces valeurs sont un point de départ, jamais une réponse. Le skill `verificatio
 |---|---|---|
 | Dividendes, intérêts, revenus 2025 | 17,2 % | 30 % |
 | Dividendes, intérêts, revenus 2026 | 18,6 % | 31,4 % |
-| Plus-values mobilières et LMNP, revenus 2025 | 18,6 % selon la plupart des analyses ; **à confirmer**, les sources divergent | 31,4 % si 18,6 % |
+| Plus-values mobilières et LMNP, revenus 2025 | 18,6 % selon la plupart des analyses ; **à confirmer**, les sources divergent et OpenFisca n'intègre pas encore la hausse (oct. 2026) | 31,4 % si 18,6 % |
 | Revenus fonciers (location nue), plus-values immobilières, assurance-vie, PEL / CEL | 17,2 % | — |
 
 Origine : LFSS 2026, CSG de 9,2 % à 10,6 % sur les revenus du patrimoine et de placement, hors exclusions ci-dessus.
@@ -25,7 +25,7 @@ Origine : LFSS 2026, CSG de 9,2 % à 10,6 % sur les revenus du patrimoine et de 
 | de 84 578 € à 181 917 € | 41 % |
 | au-delà de 181 917 € | 45 % |
 
-Source presse (loi de finances 2026) : **à confirmer** sur impots.gouv.fr.
+Vérifié le 18/10/2026 dans OpenFisca (catalogue data.gouv.fr), paramètre `impot_revenu.bareme_ir_depuis_1945.bareme`, valeur au 01/01/2025, référence loi n° 2026-103 (loi de finances 2026).
 
 ## Option barème pour les revenus du capital (case 2OP)
 
