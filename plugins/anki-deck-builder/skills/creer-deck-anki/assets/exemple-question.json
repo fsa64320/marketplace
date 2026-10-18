@@ -1,0 +1,18 @@
+{
+  "titre": "Azure — Réseau",
+  "modele": "inverse",
+  "tags": ["azure", "reseau"],
+  "cartes": [
+    {
+      "recto": "Service Azure qui relie deux réseaux virtuels sans passer par Internet",
+      "verso": "VNet peering",
+      "note": "Trafic privé sur le backbone Microsoft ; non transitif par défaut.",
+      "source": "learn.microsoft.com — Virtual network peering"
+    },
+    {
+      "recto": "Pare-feu applicatif (couche 7) associé à Application Gateway ou Front Door",
+      "verso": "Web Application Firewall (WAF)",
+      "source": "learn.microsoft.com — Azure Web Application Firewall"
+    }
+  ]
+}

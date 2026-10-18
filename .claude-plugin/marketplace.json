@@ -46,6 +46,20 @@
         "salaires",
         "cotisations"
       ]
+    },
+    {
+      "name": "anki-deck-builder",
+      "source": "./plugins/anki-deck-builder",
+      "description": "Construit des decks Anki (.apkg) sur n'importe quel thème, à partir du web ou de fichiers fournis, avec voix neuronale naturelle pour les langues",
+      "category": "education",
+      "keywords": [
+        "anki",
+        "flashcards",
+        "langues",
+        "revision",
+        "audio",
+        "tts"
+      ]
     }
   ]
 }
