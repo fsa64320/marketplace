@@ -1,10 +1,10 @@
 {
   "name": "declaration-impot-france",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Assistant fiscal pour les contribuables français : analyse des documents fiscaux (IFU, relevés SCPI), guide de la déclaration 2042/2044/2047, optimisation et questions fiscales",
   "author": {
     "name": "Frederick",
-    "email": "frederick.sales@gmail.com"
+    "email": "94764004+fsa64320@users.noreply.github.com"
   },
   "repository": "https://github.com/fsa64320/marketplace",
   "license": "proprietary",
