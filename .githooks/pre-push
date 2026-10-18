@@ -4,7 +4,7 @@
 # Activation, une fois par clone :   git config core.hooksPath .githooks
 # Cas exceptionnel assumé :          AUTORISER_PUSH_MAIN=1 git push …
 #
-# GitHub Free ne protège pas main sur un dépôt privé : ce hook est le garde-fou local.
+# GitHub refuse aussi ce push (ruleset « Protection de main ») ; ce hook l'arrête plus tôt, avec le bon message.
 set -euo pipefail
 
 [ "${AUTORISER_PUSH_MAIN:-}" = "1" ] && exit 0

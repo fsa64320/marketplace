@@ -4,7 +4,7 @@
 #   verifier_signatures.sh <chemin d'API gh renvoyant une liste de commits>
 #
 # Adapté de sta-ai-tools/.github/scripts/verify-signatures.sh. Ici le contrôle est
-# CONSULTATIF : GitHub Free ne peut pas exiger de commits vérifiés sur un dépôt privé,
+# CONSULTATIF : le ruleset de main n'exige pas de commits vérifiés (choix délibéré),
 # et les commits poussés depuis une session Claude sont signés par une clé inconnue
 # du compte. Le script avertit (::warning) et sort toujours en 0.
 set -euo pipefail

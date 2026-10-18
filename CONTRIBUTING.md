@@ -1,6 +1,6 @@
 # Contribuer
 
-Le dépôt est privé ; Frederick en est le seul mainteneur. Ces règles valent pour lui comme pour un agent IA, qui suit en plus [`AGENTS.md`](./AGENTS.md).
+Le dépôt est public ; Frederick en est le seul mainteneur. Rien de secret ne s'y committe : l'historique est visible de tous. Ces règles valent pour lui comme pour un agent IA, qui suit en plus [`AGENTS.md`](./AGENTS.md).
 
 ## Flux
 
@@ -16,7 +16,7 @@ gh pr create --base main
 
 La CI tourne sur la PR ; une fois verte, on merge en **squash** (le titre de la PR devient le commit de `main`). Une PR = un sujet.
 
-`main` n'est pas protégée côté GitHub (impossible sur un dépôt privé en GitHub Free) : le hook `pre-push` est le garde-fou. Pour un cas exceptionnel assumé : `AUTORISER_PUSH_MAIN=1 git push …`.
+`main` est protégée par le ruleset « Protection de main » : PR obligatoire, merge en squash seul, CI verte (les quatre jobs de `valider.yml`), ni force-push ni suppression, sans contournement. Le hook `pre-push` refuse le push plus tôt, en local. Un cas exceptionnel passe par la désactivation temporaire du ruleset dans Settings > Rules, pas par `AUTORISER_PUSH_MAIN`.
 
 ## Portes à lancer avant de pousser
 
