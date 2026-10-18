@@ -29,7 +29,12 @@ Il fixe l'année des revenus, confronte les valeurs de référence du plugin à 
 5. Dresse la liste à vérifier : les valeurs dont dépend la demande de l'utilisateur, les numéros de cases que tu vas citer, et la section « À vérifier chaque année » du fichier. Ne vérifie pas tout le fichier si la question n'en touche qu'une ligne.
 6. Si un outil de recherche web est disponible, vérifie chaque élément pour l'année fixée à l'étape 2 :
    - mets l'année dans chaque requête (« plafond PER versements 2026 ») ;
-   - tiens pour officielles impots.gouv.fr, bofip.impots.gouv.fr, service-public.fr et legifrance.gouv.fr ;
+   - interroge les sources officielles dans cet ordre :
+     1. impots.gouv.fr : fiches « particulier », brochure pratique de l'année (« Déclaration des revenus N »), notices des formulaires ; c'est la source des taux, seuils et numéros de cases ;
+     2. bofip.impots.gouv.fr, pour un cas limite ou une règle d'interprétation. Chaque page BOFiP existe en plusieurs versions : lis la période de validité affichée en tête et ne retiens que la version en vigueur pour l'année visée ; une version périmée ne vaut rien, même officielle ;
+     3. legifrance.gouv.fr, pour le texte de loi (loi de finances, LFSS, CGI) ;
+     4. service-public.fr ;
+   - date chaque source : une page sans date de mise à jour postérieure à la loi concernée ne confirme pas une valeur récente ;
    - une autre source sert seulement à repérer une réforme : cherche-la ensuite sur une source officielle ;
    - cherche aussi la loi de finances et la LFSS de l'année de déclaration, pour repérer un dispositif créé, supprimé ou modifié.
 7. Si le connecteur data.gouv.fr est disponible, interroge aussi OpenFisca, le moteur de calcul socio-fiscal référencé au catalogue (recherche de dataservices « openfisca ») : lis `https://api.fr.openfisca.org/latest/parameter/<identifiant>`, par exemple `impot_revenu.bareme_ir_depuis_1945.bareme`. Une valeur OpenFisca datée et portant sa référence légale vaut ✅. Une valeur absente ou plus ancienne que l'année visée ne prouve rien : OpenFisca peut avoir du retard sur une loi récente.

@@ -10,7 +10,8 @@ Ces valeurs sont un point de départ, jamais une réponse. Le skill `verificatio
 |---|---|---|
 | Dividendes, intérêts, revenus 2025 | 17,2 % | 30 % |
 | Dividendes, intérêts, revenus 2026 | 18,6 % | 31,4 % |
-| Plus-values mobilières et LMNP, revenus 2025 | 18,6 % selon la plupart des analyses ; **à confirmer**, les sources divergent et OpenFisca n'intègre pas encore la hausse (oct. 2026) | 31,4 % si 18,6 % |
+| Plus-values mobilières, revenus 2025 | 18,6 % — fiche impots.gouv.fr « J'ai réalisé une plus-value mobilière… », mise à jour le 17/07/2026, vérifiée le 18/10/2026 | 31,4 % |
+| Location meublée non professionnelle (LMNP), revenus 2025 | 18,6 % selon la presse spécialisée ; **à confirmer** sur une source officielle (OpenFisca n'intègre pas encore la hausse, oct. 2026) | — |
 | Revenus fonciers (location nue), plus-values immobilières, assurance-vie, PEL / CEL | 17,2 % | — |
 
 Origine : LFSS 2026, CSG de 9,2 % à 10,6 % sur les revenus du patrimoine et de placement, hors exclusions ci-dessus.
