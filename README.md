@@ -26,6 +26,7 @@ Tableau généré par `python3 scripts/catalogue.py` à partir des manifestes ; 
 | --- | --- | --- | --- |
 | `ai-builder` | 1.0.4 | Skills pour construire et diagnostiquer des skills, agents, commandes slash et hooks | Skills : `agent-builder`, `hooks-builder`, `skill-builder`, `slash-command-builder` |
 | `assistant-fiscal` | 2.0.0 | Assistant fiscal pour les contribuables français : analyse des documents fiscaux (IFU, relevés SCPI), guide de la déclaration 2042/2044/2047, optimisation et questions fiscales | Skills : `analyse-document-fiscal`, `expert-fiscal-qa`, `guide-declaration`, `optimisation-fiscale`, `verification-legislation` · MCP : `bensaid-avocats` |
+| `urssaf-cesu` | 2.0.0 | Récupère les salaires et cotisations déclarés sur le portail CESU de l'Urssaf et les met en tableau | Skills : `recuperer-donnees-cesu` |
 <!-- plugins:end -->
 
 Les composants d'un plugin sont préfixés par son nom : `ai-builder:skill-builder`.

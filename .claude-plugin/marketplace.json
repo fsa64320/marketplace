@@ -33,6 +33,19 @@
         "scpi",
         "france"
       ]
+    },
+    {
+      "name": "urssaf-cesu",
+      "source": "./plugins/urssaf-cesu",
+      "description": "Récupère les salaires et cotisations déclarés sur le portail CESU de l'Urssaf et les met en tableau",
+      "category": "productivity",
+      "keywords": [
+        "cesu",
+        "urssaf",
+        "particulier-employeur",
+        "salaires",
+        "cotisations"
+      ]
     }
   ]
 }
