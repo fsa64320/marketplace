@@ -1,4 +1,4 @@
-# Plugin `declaration-impot-france`
+# Plugin `assistant-fiscal`
 
 Assistant fiscal pour les contribuables français : analyse des documents fiscaux, guide de la déclaration de revenus, optimisation et questions fiscales.
 
@@ -6,7 +6,15 @@ Assistant fiscal pour les contribuables français : analyse des documents fiscau
 
 ```bash
 claude plugin marketplace add fsa64320/marketplace
-claude plugin install declaration-impot-france@sales-marketplace
+claude plugin install assistant-fiscal@sales-marketplace
+```
+
+Le plugin s'appelait `declaration-impot-france` jusqu'à la version 1.4.1. Un poste qui a l'ancien nom le désinstalle puis installe le nouveau :
+
+```bash
+claude plugin uninstall declaration-impot-france@sales-marketplace
+claude plugin marketplace update sales-marketplace
+claude plugin install assistant-fiscal@sales-marketplace
 ```
 
 ## Skills
