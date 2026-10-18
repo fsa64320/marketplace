@@ -35,6 +35,19 @@
       ]
     },
     {
+      "name": "urssaf-cesu",
+      "source": "./plugins/urssaf-cesu",
+      "description": "Récupère les salaires et cotisations déclarés sur le portail CESU de l'Urssaf et les met en tableau",
+      "category": "productivity",
+      "keywords": [
+        "cesu",
+        "urssaf",
+        "particulier-employeur",
+        "salaires",
+        "cotisations"
+      ]
+    },
+    {
       "name": "anki-deck-builder",
       "source": "./plugins/anki-deck-builder",
       "description": "Construit des decks Anki (.apkg) sur n'importe quel thème, à partir du web ou de fichiers fournis, avec voix neuronale naturelle pour les langues",
@@ -46,16 +59,6 @@
         "revision",
         "audio",
         "tts"
-      "name": "urssaf-cesu",
-      "source": "./plugins/urssaf-cesu",
-      "description": "Récupère les salaires et cotisations déclarés sur le portail CESU de l'Urssaf et les met en tableau",
-      "category": "productivity",
-      "keywords": [
-        "cesu",
-        "urssaf",
-        "particulier-employeur",
-        "salaires",
-        "cotisations"
       ]
     }
   ]
