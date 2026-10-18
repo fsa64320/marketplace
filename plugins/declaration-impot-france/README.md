@@ -37,7 +37,16 @@ Les valeurs de référence sont dans `skills/verification-legislation/references
 
 ## Serveur MCP
 
-`.mcp.json` déclare le serveur MCP de data.gouv.fr (`https://mcp.data.gouv.fr/mcp`), qui donne accès aux jeux de données publics. Aucun skill ne l'appelle encore explicitement.
+`.mcp.json` déclare le serveur MCP public de BENSAID Avocats (`https://outils.bensaid-avocats.fr/mcp`), gratuit, sans authentification, en lecture seule. `verification-legislation` l'utilise à son étape 7 :
+
+| Outil | Usage |
+|---|---|
+| `openfisca_parameter` | barèmes et taux datés |
+| `legifrance_article` | article du CGI ou du LPF en vigueur |
+| `bofip_search`, `bofip_get` | doctrine BOFiP, versions en vigueur seulement |
+| `conventions_search`, `conventions_article` | conventions fiscales, pour les revenus étrangers |
+
+C'est un service tiers sans garantie de disponibilité, et son corpus est daté : il complète la recherche web sur impots.gouv.fr, il ne la remplace pas. Les skills ne lui envoient que des termes juridiques, jamais de données personnelles.
 
 ## Avertissement
 
