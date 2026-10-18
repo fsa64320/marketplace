@@ -21,8 +21,8 @@
       ]
     },
     {
-      "name": "declaration-impot-france",
-      "source": "./plugins/declaration-impot-france",
+      "name": "assistant-fiscal",
+      "source": "./plugins/assistant-fiscal",
       "description": "Assistant fiscal pour les contribuables français : analyse des documents fiscaux (IFU, relevés SCPI), guide de la déclaration 2042/2044/2047, optimisation et questions fiscales",
       "category": "productivity",
       "keywords": [
