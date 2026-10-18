@@ -8,6 +8,8 @@ node_modules/
 .ruff_cache/
 .pytest_cache/
 Thumbs.db
+# Page générée par scripts/site.py
+_site/
 # Jetons et secrets
 **/.env
 **/token*.txt

@@ -36,6 +36,9 @@ jobs:
       - name: Tableau des plugins du README à jour
         run: python3 scripts/catalogue.py --check
 
+      - name: Page du catalogue générable
+        run: python3 scripts/site.py --sortie "$RUNNER_TEMP/site"
+
   claude-code:
     name: claude plugin validate
     runs-on: ubuntu-latest
