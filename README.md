@@ -27,6 +27,7 @@ Tableau généré par `python3 scripts/catalogue.py` à partir des manifestes ; 
 | `ai-builder` | 1.0.4 | Skills pour construire et diagnostiquer des skills, agents, commandes slash et hooks | Skills : `agent-builder`, `hooks-builder`, `skill-builder`, `slash-command-builder` |
 | `anki-deck-builder` | 0.1.0 | Construit des decks Anki (.apkg) sur n'importe quel thème, à partir du web ou de fichiers fournis, avec voix neuronale naturelle pour les langues | Skills : `creer-deck-anki` |
 | `assistant-fiscal` | 2.0.0 | Assistant fiscal pour les contribuables français : analyse des documents fiscaux (IFU, relevés SCPI), guide de la déclaration 2042/2044/2047, optimisation et questions fiscales | Skills : `analyse-document-fiscal`, `expert-fiscal-qa`, `guide-declaration`, `optimisation-fiscale`, `verification-legislation` · MCP : `bensaid-avocats` |
+| `navigateur-web` | 0.1.0 | Navigation web pilotée par agent-browser : ouvrir, lire, remplir et capturer des pages, avec installation et configuration de l'outil au premier usage | Skills : `naviguer-web` |
 | `urssaf-cesu` | 2.0.0 | Récupère les salaires et cotisations déclarés sur le portail CESU de l'Urssaf et les met en tableau | Skills : `recuperer-donnees-cesu` |
 <!-- plugins:end -->
 
