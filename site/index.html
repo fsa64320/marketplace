@@ -3,276 +3,296 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
 <title>sales-marketplace</title>
 <meta name="description" content="Catalogue des plugins Claude Code de la marketplace sales-marketplace">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;500;600;800&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2323573F'/%3E%3Cpath d='M9 11h14M9 16h14M9 21h9' stroke='white' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238B7CF6'/%3E%3Crect x='7' y='7' width='8' height='8' rx='2' fill='white'/%3E%3Crect x='17' y='7' width='8' height='8' rx='2' fill='white' opacity='.6'/%3E%3Crect x='7' y='17' width='8' height='8' rx='2' fill='white' opacity='.6'/%3E%3Crect x='17' y='17' width='8' height='8' rx='2' fill='white' opacity='.6'/%3E%3C/svg%3E">
 <!--
   Gabarit de la page GitHub Pages. Ne pas éditer _site/index.html : il est généré par
   python3 scripts/site.py, qui remplace le marqueur du script ci-dessous par le catalogue.
+  Icônes des plugins : site/icones/<plugin>.svg.
 -->
 <style>
 :root {
-  --fond: #EEF1EC;
-  --surface: #FFFFFF;
-  --encre: #18201C;
-  --discret: #56625B;
-  --trait: #D3DAD4;
-  --accent: #23573F;
-  --accent-survol: #1A4431;
+  --espace: #0B0B14;
+  --fenetre: #15161D;
+  --cadre: #2C2E38;
+  --barre: #121319;
+  --tuile: #23252E;
+  --tuile-survol: #2B2E39;
+  --champ: #1F2129;
+  --encre: #F2F3F7;
+  --discret: #9A9DAB;
+  --faible: #6B6E7C;
+  --accent: #8B7CF6;
+  --accent-fort: #A194FA;
   --sur-accent: #FFFFFF;
-  --etiquette: #E2E9E3;
-  --code: #E7ECE8;
-  --focus: #2F7DE1;
-  --sans: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --focus: #B4A9FF;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --fond: #121714;
-    --surface: #1A211D;
-    --encre: #E4EAE5;
-    --discret: #9AA79F;
-    --trait: #2C3630;
-    --accent: #7CC39C;
-    --accent-survol: #9AD6B4;
-    --sur-accent: #0E1A13;
-    --etiquette: #232C27;
-    --code: #222A25;
-    --focus: #7FB2F5;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --fond: #121714;
-  --surface: #1A211D;
-  --encre: #E4EAE5;
-  --discret: #9AA79F;
-  --trait: #2C3630;
-  --accent: #7CC39C;
-  --accent-survol: #9AD6B4;
-  --sur-accent: #0E1A13;
-  --etiquette: #232C27;
-  --code: #222A25;
-  --focus: #7FB2F5;
   color-scheme: dark;
 }
-
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: var(--fond);
+  min-height: 100vh;
   color: var(--encre);
-  font: 400 1rem/1.55 var(--sans);
+  font: 400 15px/1.5 var(--sans);
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(99, 76, 214, .28), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(59, 72, 180, .22), transparent 60%),
+    var(--espace);
 }
-a { color: var(--accent); }
-a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-code, .mono { font-family: var(--mono); font-size: .88em; }
+button, input { font: inherit; color: inherit; }
+a { color: var(--accent-fort); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+code { font-family: var(--mono); font-size: .86em; }
 
-.cadre { max-width: 64rem; margin: 0 auto; padding-inline: 16px; }
-@media (min-width: 720px) { .cadre { padding-inline: 32px; } }
-
-/* En-tête */
-header { padding: 56px 0 32px; }
-.titre {
-  margin: 0;
-  font-weight: 800;
-  font-size: clamp(2.4rem, 7vw, 4.6rem);
-  line-height: .95;
-  letter-spacing: -.035em;
-  overflow-wrap: anywhere;
-}
-.chapeau { margin: 18px 0 0; max-width: 40rem; color: var(--discret); font-size: 1.08rem; }
-.prealable {
-  margin-top: 28px;
-  padding: 16px 18px;
-  border-left: 4px solid var(--accent);
-  background: var(--surface);
-  border-radius: 0 10px 10px 0;
-  max-width: 44rem;
-}
-.prealable p { margin: 0 0 8px; }
-.ligne-cmd {
-  display: block;
-  padding: 8px 10px;
-  background: var(--code);
-  border-radius: 6px;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-/* Filtres */
-.outils {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 0 14px;
-  border-bottom: 1px solid var(--trait);
-}
-.recherche {
-  flex: 1 1 16rem;
-  max-width: 24rem;
-  padding: 10px 14px;
-  font: inherit;
-  color: var(--encre);
-  background: var(--surface);
-  border: 1px solid var(--trait);
-  border-radius: 999px;
-}
-.recherche::placeholder { color: var(--discret); }
-.categories { display: flex; flex-wrap: wrap; gap: 6px; }
-.categories button {
-  font: 500 .92rem var(--sans);
-  padding: 7px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--trait);
-  background: transparent;
-  color: var(--encre);
-  cursor: pointer;
-}
-.categories button[aria-pressed="true"] {
-  background: var(--encre);
-  border-color: var(--encre);
-  color: var(--fond);
-}
-.compte { margin: 14px 0 0; color: var(--discret); font-size: .92rem; }
-
-/* Liste des plugins */
-.plugins { list-style: none; margin: 0; padding: 0; }
-.plugin {
+/* Fenêtre */
+.fenetre {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--trait);
-}
-@media (min-width: 760px) {
-  .plugin { grid-template-columns: minmax(0, 1fr) 17rem; gap: 40px; }
-}
-.plugin h2 {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: -.015em;
-  line-height: 1.2;
-}
-.identite { margin: 4px 0 0; color: var(--discret); font-size: .92rem; }
-.identite .version {
-  display: inline-block;
-  margin-left: 8px;
-  padding: 1px 8px;
-  border-radius: 999px;
-  background: var(--etiquette);
-  color: var(--encre);
-  font-family: var(--mono);
-  font-size: .8rem;
-}
-.identite .categorie { margin-left: 10px; }
-.plugin .description { margin: 12px 0 0; max-width: 42rem; }
-.mots { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; padding: 0; list-style: none; }
-.mots li {
-  font-size: .82rem;
-  padding: 2px 9px;
-  border-radius: 4px;
-  background: var(--etiquette);
-  color: var(--discret);
-}
-
-details { margin-top: 16px; }
-summary {
-  cursor: pointer;
-  font-weight: 500;
-  color: var(--accent);
-  width: fit-content;
-}
-summary:hover { color: var(--accent-survol); }
-.groupe { margin: 14px 0 0; }
-.groupe h3 { margin: 0 0 6px; font-size: .95rem; font-weight: 600; }
-.groupe ul { margin: 0; padding: 0; list-style: none; border-left: 2px solid var(--trait); }
-.groupe li { padding: 6px 0 6px 14px; }
-.groupe li code { font-weight: 500; color: var(--encre); }
-.groupe li p {
-  margin: 2px 0 0;
-  color: var(--discret);
-  font-size: .92rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  grid-template-columns: 72px minmax(0, 1fr);
+  max-width: 1240px;
+  min-height: calc(100vh - 48px);
+  margin: 24px auto;
+  background: var(--fenetre);
+  border: 1px solid var(--cadre);
+  border-radius: 22px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .55), inset 0 1px 0 rgba(255, 255, 255, .04);
   overflow: hidden;
 }
-
-.action { display: flex; flex-direction: column; gap: 10px; align-self: start; }
-.installer {
+.laterale {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+  padding: 22px 0;
+  background: var(--barre);
+  border-right: 1px solid var(--cadre);
+}
+.laterale .logo { width: 36px; height: 36px; margin-bottom: 18px; color: var(--encre); }
+.laterale a, .laterale button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 0;
+  background: none;
+  color: var(--discret);
+  cursor: pointer;
+  text-decoration: none;
+}
+.laterale a:hover, .laterale button:hover { background: var(--tuile); color: var(--encre); }
+.laterale .actif { color: var(--encre); background: var(--tuile); }
+.laterale svg { width: 22px; height: 22px; }
+
+.contenu { padding: 28px 40px 40px; min-width: 0; }
+
+/* En-tête */
+.entete { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.entete h1 { margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -.02em; }
+.recherche { position: relative; flex: 1 1 260px; max-width: 360px; }
+.recherche svg { position: absolute; left: 13px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%); color: var(--discret); pointer-events: none; }
+.recherche input {
+  width: 100%;
+  padding: 9px 14px 9px 40px;
+  background: var(--champ);
+  border: 1px solid var(--cadre);
+  border-radius: 10px;
+}
+.recherche input::placeholder { color: var(--discret); }
+.outils-entete { margin-left: auto; display: flex; gap: 8px; }
+.outils-entete a {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--tuile);
+  color: var(--discret);
+}
+.outils-entete a:hover { color: var(--encre); }
+.outils-entete svg { width: 20px; height: 20px; }
+
+/* Onglets */
+.onglets { display: flex; gap: 26px; margin: 26px 0 22px; border-bottom: 1px solid var(--cadre); overflow-x: auto; }
+.onglets button {
+  padding: 0 0 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background: none;
+  color: var(--discret);
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.onglets button:hover { color: var(--encre); }
+.onglets button[aria-selected="true"] { color: var(--encre); border-bottom-color: var(--encre); }
+
+/* Grille */
+.grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.tuile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  aspect-ratio: 1 / 1.2;
+  padding: 16px 14px 14px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: var(--tuile);
+  text-align: left;
+  cursor: pointer;
+}
+.tuile:hover { background: var(--tuile-survol); border-color: var(--cadre); }
+.tuile .visuel { flex: 1; display: grid; place-items: center; }
+.tuile .visuel > * { width: 64px; height: 64px; }
+.tuile .nom { font-weight: 600; font-size: 14px; line-height: 1.3; }
+.tuile .meta { display: flex; align-items: center; gap: 6px; margin-top: 6px; color: var(--faible); font-size: 12.5px; }
+.tuile .meta::before { content: ""; width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid currentColor; }
+.tuile .pastille {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--sur-accent);
+  font-size: 11px;
+  font-weight: 600;
+}
+.initiales {
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 22px;
+  color: #fff;
+}
+.vide { padding: 48px 0; color: var(--discret); }
+.vide button { border: 0; background: none; color: var(--accent-fort); text-decoration: underline; cursor: pointer; padding: 0; }
+
+.pied { margin-top: 36px; color: var(--faible); font-size: 13px; }
+.pied p { margin: 0 0 6px; max-width: 70ch; }
+
+/* Fiche */
+dialog {
+  width: min(640px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  padding: 0;
+  border: 1px solid var(--cadre);
+  border-radius: 18px;
+  background: var(--fenetre);
+  color: var(--encre);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
+}
+dialog::backdrop { background: rgba(5, 5, 12, .7); backdrop-filter: blur(3px); }
+.fiche { padding: 26px 28px 28px; }
+.fiche-haut { display: flex; gap: 18px; align-items: center; }
+.fiche-haut .visuel > * { width: 72px; height: 72px; display: block; }
+.fiche-haut h2 { margin: 0; font-size: 22px; letter-spacing: -.01em; }
+.fiche-haut p { margin: 4px 0 0; color: var(--discret); font-size: 13.5px; }
+.fermer {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--tuile);
+  color: var(--discret);
+  cursor: pointer;
+}
+.fermer:hover { color: var(--encre); }
+.fiche .description { margin: 20px 0 0; }
+.mots { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; padding: 0; list-style: none; }
+.mots li { padding: 2px 9px; border-radius: 6px; background: var(--tuile); color: var(--discret); font-size: 12.5px; }
+.installer {
+  display: inline-flex;
+  align-items: center;
   gap: 10px;
-  padding: 13px 18px;
+  margin-top: 22px;
+  padding: 11px 18px;
   border-radius: 10px;
   background: var(--accent);
   color: var(--sur-accent);
   font-weight: 600;
   text-decoration: none;
-  text-align: center;
-  white-space: nowrap;
 }
-.installer:hover { background: var(--accent-survol); }
-.installer svg { flex: none; }
-.action .commande { margin: 0; color: var(--discret); font-size: .82rem; overflow-wrap: anywhere; }
-
-.vide { padding: 40px 0; color: var(--discret); }
-.vide button {
-  font: inherit;
-  color: var(--accent);
-  background: none;
-  border: 0;
-  padding: 0;
-  text-decoration: underline;
-  cursor: pointer;
+.installer:hover { background: var(--accent-fort); }
+.installer svg { width: 18px; height: 18px; }
+.commande { margin: 10px 0 0; color: var(--faible); font-size: 12.5px; overflow-wrap: anywhere; }
+.groupe { margin-top: 22px; }
+.groupe h3 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--discret); }
+.groupe ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.groupe li { padding: 10px 12px; border-radius: 10px; background: var(--barre); }
+.groupe li code { color: var(--encre); font-weight: 500; }
+.groupe li p {
+  margin: 3px 0 0;
+  color: var(--discret);
+  font-size: 13px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
+.note { margin-top: 22px; color: var(--faible); font-size: 12.5px; }
 
-footer { padding: 36px 0 56px; color: var(--discret); font-size: .92rem; }
-footer p { margin: 0 0 10px; max-width: 44rem; }
-
+@media (max-width: 720px) {
+  .fenetre { grid-template-columns: 1fr; margin: 0; border-radius: 0; border: 0; min-height: 100vh; }
+  .laterale { display: none; }
+  .contenu { padding: 20px 16px 32px; }
+  .entete { gap: 14px; }
+  .recherche { order: 3; flex-basis: 100%; max-width: none; }
+  .grille { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .fiche { padding: 22px 18px 22px; }
+}
 @media (prefers-reduced-motion: no-preference) {
-  .installer, .categories button { transition: background-color .15s ease, color .15s ease; }
+  .tuile, .installer, .onglets button { transition: background-color .15s ease, border-color .15s ease, color .15s ease; }
 }
 </style>
 </head>
 <body>
-<header class="cadre">
-  <h1 class="titre" id="titre">marketplace</h1>
-  <p class="chapeau" id="chapeau"></p>
-  <div class="prealable">
-    <p>Le bouton de chaque plugin ouvre Claude Code avec la consigne d'installation déjà tapée. Pour ajouter la marketplace à la main :</p>
-    <code class="ligne-cmd" id="cmd-marketplace"></code>
-  </div>
-</header>
+<div class="fenetre">
+  <nav class="laterale" aria-label="Navigation">
+    <svg class="logo" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="18" cy="18" r="4"/><ellipse cx="18" cy="18" rx="15" ry="6.5"/><ellipse cx="18" cy="18" rx="15" ry="6.5" transform="rotate(60 18 18)"/><ellipse cx="18" cy="18" rx="15" ry="6.5" transform="rotate(120 18 18)"/></svg>
+    <button type="button" class="actif" id="nav-accueil" title="Catalogue" aria-label="Catalogue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/></svg></button>
+    <a id="nav-depot" title="Code source sur GitHub" aria-label="Code source sur GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></a>
+    <button type="button" id="nav-aide" title="Ajouter la marketplace" aria-label="Ajouter la marketplace"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-6-6M12 19h8"/></svg></button>
+  </nav>
 
-<main class="cadre">
-  <div class="outils">
-    <input class="recherche" id="recherche" type="search" placeholder="Chercher un plugin, un skill, un mot-clé" aria-label="Chercher dans le catalogue">
-    <div class="categories" id="categories" role="group" aria-label="Filtrer par catégorie"></div>
-  </div>
-  <p class="compte" id="compte" aria-live="polite"></p>
-  <ul class="plugins" id="plugins"></ul>
-</main>
+  <main class="contenu">
+    <header class="entete">
+      <h1 id="titre">marketplace</h1>
+      <label class="recherche">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="recherche" type="search" placeholder="Rechercher" aria-label="Rechercher un plugin, un skill ou un mot-clé">
+      </label>
+      <div class="outils-entete">
+        <a id="lien-depot" title="Code source sur GitHub" aria-label="Code source sur GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a>
+      </div>
+    </header>
 
-<footer class="cadre">
-  <p>Le bouton « Installer dans Claude Code » ouvre un lien <code>claude-cli://</code> : un terminal s'ouvre avec Claude Code et la consigne pré-remplie. Rien n'est envoyé tant que vous n'appuyez pas sur Entrée.</p>
-  <p>S'il ne se passe rien, lancez <code>claude</code> dans un terminal et envoyez un premier message : Claude Code enregistre le lien à ce moment-là. Vous pouvez aussi taper la commande affichée sous le bouton.</p>
-  <p id="pied"></p>
-</footer>
+    <div class="onglets" id="onglets" role="tablist" aria-label="Catégories"></div>
+    <ul class="grille" id="grille"></ul>
+
+    <footer class="pied">
+      <p id="pied-cmd"></p>
+      <p>« Installer dans Claude Code » ouvre un lien <code>claude-cli://</code> : Claude Code s'ouvre avec la consigne d'installation déjà tapée, et rien n'est envoyé avant Entrée. S'il ne se passe rien, lancez <code>claude</code> et envoyez un premier message : c'est à ce moment que Claude Code enregistre le lien.</p>
+    </footer>
+  </main>
+</div>
+
+<dialog id="fiche" aria-labelledby="fiche-titre">
+  <div class="fiche" id="fiche-corps"></div>
+</dialog>
 
 <script id="catalogue" type="application/json">__CATALOGUE__</script>
 <script>
@@ -280,18 +300,12 @@ footer p { margin: 0 0 10px; max-width: 44rem; }
   "use strict";
   var donnees = JSON.parse(document.getElementById("catalogue").textContent);
   var mk = donnees.marketplace;
-  var etat = { texte: "", categorie: "" };
+  var etat = { texte: "", onglet: "" };
 
   var LIBELLES = {
-    development: "Développement",
-    productivity: "Productivité",
-    security: "Sécurité",
-    testing: "Tests",
-    database: "Données",
-    design: "Design",
-    monitoring: "Supervision",
-    deployment: "Déploiement",
-    learning: "Apprentissage"
+    development: "Développement", productivity: "Productivité", security: "Sécurité",
+    testing: "Tests", database: "Données", design: "Design", monitoring: "Supervision",
+    deployment: "Déploiement", learning: "Apprentissage"
   };
   var GROUPES = [
     ["skills", "Skills", "skill", "skills"],
@@ -300,15 +314,37 @@ footer p { margin: 0 0 10px; max-width: 44rem; }
     ["hooks", "Hooks", "hook", "hooks"],
     ["mcp", "Serveurs MCP", "serveur MCP", "serveurs MCP"]
   ];
-  var ICONE = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg>';
+  var TERMINAL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg>';
+  var TEINTES = [["#8B7CF6", "#4F46E5"], ["#22D3EE", "#0E7490"], ["#F472B6", "#BE185D"], ["#34D399", "#047857"], ["#FB923C", "#C2410C"], ["#60A5FA", "#1D4ED8"]];
 
-  function libelle(cat) { return LIBELLES[cat] || (cat ? cat.charAt(0).toUpperCase() + cat.slice(1) : "Autres"); }
-
+  function libelle(c) { return LIBELLES[c] || (c ? c.charAt(0).toUpperCase() + c.slice(1) : "Autres"); }
   function el(balise, classe, texte) {
     var n = document.createElement(balise);
     if (classe) n.className = classe;
     if (texte !== undefined) n.textContent = texte;
     return n;
+  }
+
+  function visuel(p) {
+    var v = el("div", "visuel");
+    if (p.icone) { v.innerHTML = p.icone; return v; }
+    var h = 0;
+    for (var i = 0; i < p.nom.length; i++) h = (h * 31 + p.nom.charCodeAt(i)) >>> 0;
+    var t = TEINTES[h % TEINTES.length];
+    var mots = p.titre.split(/[\s-]+/).filter(Boolean);
+    var ini = el("span", "initiales", (mots[0][0] + (mots[1] ? mots[1][0] : "")).toUpperCase());
+    ini.style.background = "linear-gradient(135deg," + t[0] + "," + t[1] + ")";
+    v.appendChild(ini);
+    return v;
+  }
+
+  function resume(c) {
+    var parties = [];
+    GROUPES.forEach(function (g) {
+      var n = (c[g[0]] || []).length;
+      if (n) parties.push(n + " " + (n > 1 ? g[3] : g[2]));
+    });
+    return parties.join(", ");
   }
 
   function consigne(nom) {
@@ -320,25 +356,60 @@ footer p { margin: 0 0 10px; max-width: 44rem; }
     ].join("\n");
   }
 
-  function resume(composants) {
-    var parties = [];
-    GROUPES.forEach(function (g) {
-      var n = (composants[g[0]] || []).length;
-      if (n) parties.push(n + " " + (n > 1 ? g[3] : g[2]));
-    });
-    return parties.join(", ");
+  function tuile(p) {
+    var li = el("li");
+    var b = el("button", "tuile");
+    b.type = "button";
+    b.setAttribute("aria-haspopup", "dialog");
+    b.appendChild(visuel(p));
+    b.appendChild(el("span", "nom", p.titre));
+    b.appendChild(el("span", "meta", resume(p.composants) || libelle(p.categorie)));
+    if (p.version) b.appendChild(el("span", "pastille", "v" + p.version));
+    b.addEventListener("click", function () { ouvrir(p, b); });
+    li.appendChild(b);
+    return li;
   }
 
-  function blocComposants(composants) {
-    var texte = resume(composants);
-    if (!texte) return null;
-    var details = el("details");
-    details.appendChild(el("summary", "", "Voir le contenu : " + texte));
+  function ouvrir(p, declencheur) {
+    var corps = document.getElementById("fiche-corps");
+    corps.textContent = "";
+    var fermer = el("button", "fermer", "✕");
+    fermer.type = "button";
+    fermer.setAttribute("aria-label", "Fermer");
+    fermer.addEventListener("click", function () { dlg.close(); });
+    corps.appendChild(fermer);
+
+    var haut = el("div", "fiche-haut");
+    haut.appendChild(visuel(p));
+    var id = el("div");
+    var h2 = el("h2", "", p.titre);
+    h2.id = "fiche-titre";
+    id.appendChild(h2);
+    id.appendChild(el("p", "", p.nom + (p.version ? "  ·  v" + p.version : "") + "  ·  " + libelle(p.categorie)));
+    haut.appendChild(id);
+    corps.appendChild(haut);
+
+    if (p.description) corps.appendChild(el("p", "description", p.description));
+    if (p.motsCles && p.motsCles.length) {
+      var mots = el("ul", "mots");
+      p.motsCles.forEach(function (m) { mots.appendChild(el("li", "", m)); });
+      corps.appendChild(mots);
+    }
+
+    var lien = el("a", "installer");
+    lien.href = "claude-cli://open?q=" + encodeURIComponent(consigne(p.nom));
+    lien.innerHTML = TERMINAL;
+    lien.appendChild(document.createTextNode("Installer dans Claude Code"));
+    corps.appendChild(lien);
+    var cmd = el("p", "commande");
+    cmd.appendChild(el("code", "", "claude plugin install " + p.nom + "@" + mk));
+    corps.appendChild(cmd);
+
     GROUPES.forEach(function (g) {
-      var liste = composants[g[0]] || [];
+      var liste = p.composants[g[0]] || [];
       if (!liste.length) return;
-      var groupe = el("div", "groupe");
-      groupe.appendChild(el("h3", "", g[1]));
+      var bloc = el("div", "groupe");
+      bloc.appendChild(el("h3", "", g[1]));
       var ul = el("ul");
       liste.forEach(function (c) {
         var li = el("li");
@@ -346,121 +417,90 @@ footer p { margin: 0 0 10px; max-width: 44rem; }
         if (c.description) li.appendChild(el("p", "", c.description));
         ul.appendChild(li);
       });
-      groupe.appendChild(ul);
-      details.appendChild(groupe);
+      bloc.appendChild(ul);
+      corps.appendChild(bloc);
     });
-    return details;
-  }
 
-  function fichePlugin(p) {
-    var li = el("li", "plugin");
-    var corps = el("div");
-    corps.appendChild(el("h2", "", p.titre));
-    var identite = el("p", "identite");
-    identite.appendChild(el("span", "mono", p.nom));
-    if (p.version) identite.appendChild(el("span", "version", "v" + p.version));
-    identite.appendChild(el("span", "categorie", libelle(p.categorie)));
-    corps.appendChild(identite);
-    if (p.description) corps.appendChild(el("p", "description", p.description));
-    if (p.motsCles && p.motsCles.length) {
-      var mots = el("ul", "mots");
-      mots.setAttribute("aria-label", "Mots-clés");
-      p.motsCles.forEach(function (m) { mots.appendChild(el("li", "", m)); });
-      corps.appendChild(mots);
-    }
-    var details = blocComposants(p.composants);
-    if (details) corps.appendChild(details);
-
-    var action = el("div", "action");
-    var lien = el("a", "installer");
-    lien.href = "claude-cli://open?q=" + encodeURIComponent(consigne(p.nom));
-    lien.innerHTML = ICONE;
-    lien.appendChild(document.createTextNode("Installer dans Claude Code"));
-    lien.setAttribute("aria-label", "Installer " + p.titre + " dans Claude Code");
-    action.appendChild(lien);
-    var cmd = el("p", "commande");
-    cmd.appendChild(el("code", "", "claude plugin install " + p.nom + "@" + mk));
-    action.appendChild(cmd);
-
-    li.appendChild(corps);
-    li.appendChild(action);
-    return li;
+    dlg.retour = declencheur;
+    dlg.showModal();
+    lien.focus();
   }
 
   function texteDe(p) {
-    var morceaux = [p.nom, p.titre, p.description].concat(p.motsCles || []);
-    GROUPES.forEach(function (g) {
-      (p.composants[g[0]] || []).forEach(function (c) { morceaux.push(c.nom, c.description); });
-    });
-    return morceaux.join(" ").toLowerCase();
+    var m = [p.nom, p.titre, p.description].concat(p.motsCles || []);
+    GROUPES.forEach(function (g) { (p.composants[g[0]] || []).forEach(function (c) { m.push(c.nom, c.description); }); });
+    return m.join(" ").toLowerCase();
   }
 
   function afficher() {
-    var liste = document.getElementById("plugins");
-    liste.textContent = "";
+    var grille = document.getElementById("grille");
+    grille.textContent = "";
     var retenus = donnees.plugins.filter(function (p) {
-      return (!etat.categorie || p.categorie === etat.categorie) &&
-             (!etat.texte || texteDe(p).indexOf(etat.texte) !== -1);
+      return (!etat.onglet || p.categorie === etat.onglet) && (!etat.texte || texteDe(p).indexOf(etat.texte) !== -1);
     });
-    retenus.forEach(function (p) { liste.appendChild(fichePlugin(p)); });
-    var total = donnees.plugins.length;
-    document.getElementById("compte").textContent = retenus.length === total
-      ? total + (total > 1 ? " plugins" : " plugin")
-      : retenus.length + " sur " + total + " plugins";
+    retenus.forEach(function (p) { grille.appendChild(tuile(p)); });
     if (!retenus.length) {
-      var vide = el("li", "vide");
-      vide.appendChild(document.createTextNode(
-        donnees.plugins.length ? "Aucun plugin ne correspond à cette recherche. " : "La marketplace ne publie encore aucun plugin."));
+      var vide = el("li", "vide", donnees.plugins.length ? "Aucun plugin ne correspond à cette recherche. " : "La marketplace ne publie encore aucun plugin.");
       if (donnees.plugins.length) {
-        var reset = el("button", "", "Tout afficher");
-        reset.type = "button";
-        reset.addEventListener("click", function () {
-          etat.texte = ""; etat.categorie = "";
+        var r = el("button", "", "Tout afficher");
+        r.type = "button";
+        r.addEventListener("click", function () {
+          etat.texte = ""; etat.onglet = "";
           document.getElementById("recherche").value = "";
-          majCategories(); afficher();
+          majOnglets(); afficher();
         });
-        vide.appendChild(reset);
+        vide.appendChild(r);
       }
-      liste.appendChild(vide);
+      grille.appendChild(vide);
     }
   }
 
-  function majCategories() {
-    document.querySelectorAll("#categories button").forEach(function (b) {
-      b.setAttribute("aria-pressed", String(b.dataset.cat === etat.categorie));
+  function majOnglets() {
+    document.querySelectorAll("#onglets button").forEach(function (b) {
+      b.setAttribute("aria-selected", String(b.dataset.cat === etat.onglet));
     });
   }
 
-  function construireCategories() {
+  function construireOnglets() {
     var cats = [];
     donnees.plugins.forEach(function (p) { if (cats.indexOf(p.categorie) === -1) cats.push(p.categorie); });
-    var zone = document.getElementById("categories");
-    if (cats.length < 2) { zone.hidden = true; return; }
+    var zone = document.getElementById("onglets");
     [""].concat(cats.sort()).forEach(function (c) {
-      var b = el("button", "", c ? libelle(c) : "Toutes");
+      var b = el("button", "", c ? libelle(c) : "Tous");
       b.type = "button";
+      b.setAttribute("role", "tab");
       b.dataset.cat = c;
-      b.addEventListener("click", function () { etat.categorie = c; majCategories(); afficher(); });
+      b.addEventListener("click", function () { etat.onglet = c; majOnglets(); afficher(); });
       zone.appendChild(b);
     });
-    majCategories();
+    majOnglets();
   }
 
+  var dlg = document.getElementById("fiche");
+  dlg.addEventListener("close", function () { if (dlg.retour) dlg.retour.focus(); });
+  dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+
+  var urlDepot = "https://github.com/" + donnees.depot;
   document.getElementById("titre").textContent = mk;
   document.title = mk + " · plugins Claude Code";
-  document.getElementById("chapeau").textContent = donnees.description;
-  document.getElementById("cmd-marketplace").textContent = "claude plugin marketplace add " + donnees.depot;
-  var pied = document.getElementById("pied");
-  var depot = el("a", "", "Code source sur GitHub");
-  depot.href = "https://github.com/" + donnees.depot;
-  pied.appendChild(depot);
-  if (donnees.proprietaire) pied.appendChild(document.createTextNode(", maintenu par " + donnees.proprietaire + "."));
-
+  document.getElementById("lien-depot").href = urlDepot;
+  document.getElementById("nav-depot").href = urlDepot;
+  var piedCmd = document.getElementById("pied-cmd");
+  piedCmd.appendChild(document.createTextNode("Ajouter la marketplace à la main : "));
+  piedCmd.appendChild(el("code", "", "claude plugin marketplace add " + donnees.depot));
+  document.getElementById("nav-accueil").addEventListener("click", function () {
+    etat.texte = ""; etat.onglet = "";
+    document.getElementById("recherche").value = "";
+    majOnglets(); afficher(); window.scrollTo(0, 0);
+  });
+  document.getElementById("nav-aide").addEventListener("click", function () {
+    piedCmd.scrollIntoView({ block: "center" });
+  });
   document.getElementById("recherche").addEventListener("input", function (e) {
     etat.texte = e.target.value.trim().toLowerCase();
     afficher();
   });
-  construireCategories();
+  construireOnglets();
   afficher();
 })();
 </script>

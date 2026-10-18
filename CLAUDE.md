@@ -43,7 +43,7 @@ python3 scripts/ajouter.py hooks|mcp <plugin>
 
 Régénérer le tableau des plugins du README après toute modification d'un manifeste ou d'un composant : `python3 scripts/catalogue.py`.
 
-La page GitHub Pages du catalogue (https://fsa64320.github.io/marketplace/) est générée par `python3 scripts/site.py` à partir des mêmes manifestes et du gabarit `site/index.html` ; elle s'écrit dans `_site/` (ignoré par git) et la CI la republie à chaque merge sur `main`. Rien à régénérer à la main.
+La page GitHub Pages du catalogue (https://fsa64320.github.io/marketplace/) est générée par `python3 scripts/site.py` à partir des mêmes manifestes et du gabarit `site/index.html` (icône d'un plugin : `site/icones/<plugin>.svg`, carré 64×64 ; sans elle, une tuile à ses initiales) ; elle s'écrit dans `_site/` (ignoré par git) et la CI la republie à chaque merge sur `main`. Rien à régénérer à la main.
 
 Tester l'installation sans toucher à sa configuration : `HOME=$(mktemp -d) claude plugin marketplace add . && HOME=… claude plugin install <plugin>@sales-marketplace`.
 
