@@ -63,7 +63,7 @@ python3 scripts/ajouter.py hooks    mon-plugin
 python3 scripts/ajouter.py mcp      mon-plugin
 ```
 
-Le script applique `templates/plugin/`, déclare le plugin dans `marketplace.json` et régénère le tableau du README.
+Le script applique `templates/plugin/`, déclare le plugin dans `marketplace.json` et régénère le tableau du README. La page du catalogue (GitHub Pages) se republie seule au merge sur `main` ; pour la voir avant : `python3 scripts/site.py` puis ouvrir `_site/index.html`.
 
 Les règles qui mordent, détaillées dans [`CLAUDE.md`](./CLAUDE.md) :
 

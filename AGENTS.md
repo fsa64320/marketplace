@@ -48,6 +48,7 @@ Atteins zéro constat au lieu d'expliquer les constats restants. Une fonction tr
 - **Une copie installée d'un plugin** (`~/.claude/plugins/…`, le cache de plugins) : c'est un artefact d'installation, la source est ici. Une modification là-bas est perdue à la prochaine mise à jour.
 - **`templates/plugin/`** sans mettre à jour `scripts/ajouter.py` dans la même PR : le script remplace des marqueurs précis (`__NOM__`, `exemple-skill`…).
 - **Le bloc entre `<!-- plugins:start -->` et `<!-- plugins:end -->` du README** à la main : il est généré par `scripts/catalogue.py`.
+- **`_site/`** : page générée par `scripts/site.py`. Le rendu se change dans le gabarit `site/index.html`.
 - **Les skills d'`ai-builder`** sans signaler qu'il faut reporter la modification dans `sta-ai-tools/skills`, d'où ils viennent.
 
 ## Affirmations sur le contenu

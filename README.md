@@ -4,6 +4,8 @@ Marketplace personnelle de plugins pour Claude Code : skills, agents, commandes 
 
 ## Installer
 
+Le catalogue en ligne, https://fsa64320.github.io/marketplace/, liste les plugins ; le bouton « Installer dans Claude Code » de chaque plugin ouvre Claude Code avec la consigne d'installation pré-remplie (lien `claude-cli://`).
+
 Dans un terminal :
 
 ```bash
@@ -43,6 +45,7 @@ templates/plugin/                 modèle utilisé par scripts/ajouter.py
 scripts/ajouter.py                crée un plugin ou un composant
 scripts/valider.py                règles du dépôt (--base : bump de version exigé)
 scripts/catalogue.py              tableau des plugins de ce README
+scripts/site.py                   page GitHub Pages du catalogue (gabarit site/index.html)
 .githooks/pre-push                refuse un push direct vers main
 .claude/settings.json             même garde-fou pour Claude Code dans ce dépôt
 ```
