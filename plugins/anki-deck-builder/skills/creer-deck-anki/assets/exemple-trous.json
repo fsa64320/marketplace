@@ -1,0 +1,15 @@
+{
+  "titre": "Histoire — Révolution française",
+  "modele": "trous",
+  "cartes": [
+    {
+      "texte": "La prise de la Bastille a lieu le {{c1::14 juillet 1789}}.",
+      "extra": "Elle devient fête nationale en 1880.",
+      "source": "Manuel d'histoire, chapitre 3, p. 42"
+    },
+    {
+      "texte": "La {{c1::Déclaration des droits de l'homme et du citoyen}} est adoptée le {{c2::26 août 1789}}.",
+      "source": "Manuel d'histoire, chapitre 3, p. 45"
+    }
+  ]
+}

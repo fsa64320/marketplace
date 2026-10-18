@@ -1,0 +1,20 @@
+{
+  "name": "anki-deck-builder",
+  "version": "0.1.0",
+  "description": "Construit des decks Anki (.apkg) sur n'importe quel thème, à partir du web ou de fichiers fournis, avec voix neuronale naturelle pour les langues",
+  "author": {
+    "name": "Frederick",
+    "email": "94764004+fsa64320@users.noreply.github.com"
+  },
+  "repository": "https://github.com/fsa64320/marketplace",
+  "license": "proprietary",
+  "keywords": [
+    "anki",
+    "flashcards",
+    "langues",
+    "revision",
+    "audio",
+    "tts"
+  ],
+  "displayName": "Anki Deck Builder"
+}

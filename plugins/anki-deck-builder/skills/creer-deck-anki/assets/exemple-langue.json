@@ -1,0 +1,40 @@
+{
+  "titre": "Japonais — Au restaurant",
+  "modele": "langue",
+  "langue": { "nom": "Japonais", "code": "ja-JP", "voix": "ja-JP-NanamiNeural", "debit": "-10%" },
+  "sens": ["comprehension", "production"],
+  "tags": ["japonais"],
+  "cartes": [
+    {
+      "terme": "水",
+      "lecture": "みず",
+      "romanisation": "mizu",
+      "traduction": "eau",
+      "exemple": "水をください。",
+      "exemple_traduction": "De l'eau, s'il vous plaît.",
+      "prononcer": "みず",
+      "sous_deck": "Boissons",
+      "tags": ["boissons"]
+    },
+    {
+      "terme": "お会計",
+      "lecture": "おかいけい",
+      "romanisation": "okaikei",
+      "traduction": "l'addition",
+      "exemple": "お会計お願いします。",
+      "exemple_traduction": "L'addition, s'il vous plaît.",
+      "note": "Formule polie pour demander l'addition.",
+      "prononcer": "おかいけい",
+      "prononcer_exemple": "おかいけいおねがいします。",
+      "sous_deck": "Phrases utiles"
+    },
+    {
+      "terme": "美味しい",
+      "lecture": "おいしい",
+      "romanisation": "oishii",
+      "traduction": "délicieux",
+      "prononcer": "おいしい",
+      "sous_deck": "Phrases utiles"
+    }
+  ]
+}

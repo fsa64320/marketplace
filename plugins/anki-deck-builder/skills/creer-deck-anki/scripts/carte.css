@@ -1,0 +1,28 @@
+.card {
+  font-family: "Hiragino Sans", "Noto Sans", "Noto Sans CJK JP", "Yu Gothic", "Segoe UI", sans-serif;
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.4;
+  color: #1f2328;
+  background: #fbfaf7;
+  padding: 24px 16px;
+}
+.night_mode .card,
+.nightMode .card {
+  color: #e8e6e1;
+  background: #22211f;
+}
+.consigne { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: #8a8780; margin-bottom: 14px; }
+.terme { font-size: 46px; font-weight: 600; }
+.lecture { font-size: 24px; color: #6b6862; margin-top: 4px; }
+.romanisation { font-size: 19px; font-style: italic; color: #b5462f; margin-top: 6px; }
+.traduction { font-size: 28px; margin: 12px 0 6px; }
+.recto { font-size: 26px; }
+.verso { font-size: 24px; margin-top: 8px; }
+.exemple { font-size: 21px; margin-top: 22px; }
+.exemple-trad { font-size: 16px; color: #6b6862; margin-top: 4px; }
+.note { font-size: 16px; color: #6b6862; margin-top: 18px; }
+.source { font-size: 12px; color: #8a8780; margin-top: 18px; }
+.cloze { font-weight: 600; color: #2f6fb5; }
+.night_mode .cloze, .nightMode .cloze { color: #7fb0e8; }
+hr#answer { margin: 18px 0; border: 0; border-top: 1px solid #d8d5ce; }
