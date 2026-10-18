@@ -46,6 +46,7 @@ scripts/ajouter.py                crée un plugin ou un composant
 scripts/valider.py                règles du dépôt (--base : bump de version exigé)
 scripts/catalogue.py              tableau des plugins de ce README
 scripts/site.py                   page GitHub Pages du catalogue (gabarit site/index.html)
+site/icones/<plugin>.svg          icône d'un plugin sur la page du catalogue
 .githooks/pre-push                refuse un push direct vers main
 .claude/settings.json             même garde-fou pour Claude Code dans ce dépôt
 ```

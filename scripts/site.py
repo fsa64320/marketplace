@@ -8,7 +8,8 @@
 Sources : .claude-plugin/marketplace.json (liste, catégorie, mots-clés), plugin.json
 (version, nom affiché) et l'inventaire disque de chaque plugin (skills, agents,
 commandes, hooks, MCP). Le gabarit est site/index.html : le script y remplace le
-marqueur __CATALOGUE__ par les données en JSON.
+marqueur __CATALOGUE__ par les données en JSON. L'icône d'un plugin est le fichier
+site/icones/<plugin>.svg ; sans lui, la page dessine une tuile à ses initiales.
 """
 
 import argparse
@@ -20,6 +21,7 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
 GABARIT = RACINE / "site" / "index.html"
+ICONES = RACINE / "site" / "icones"
 MARQUEUR = "__CATALOGUE__"
 DEPOT_PAR_DEFAUT = "fsa64320/marketplace"
 BLOC_YAML = re.compile(r"[>|][+-]?")
@@ -75,10 +77,16 @@ def composants(nom: str, dossier: Path) -> dict[str, list[dict[str, str]]]:
     }
 
 
+def icone(nom: str) -> str:
+    chemin = ICONES / f"{nom}.svg"
+    return chemin.read_text(encoding="utf-8").strip() if chemin.exists() else ""
+
+
 def fiche(entree: dict) -> dict:
     dossier = (RACINE / entree["source"]).resolve()
     manifeste = lire_json(dossier / ".claude-plugin" / "plugin.json")
     return {
+        "icone": icone(entree["name"]),
         "nom": entree["name"],
         "titre": manifeste.get("displayName") or entree["name"],
         "version": manifeste.get("version", ""),
