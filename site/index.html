@@ -228,6 +228,10 @@ dialog::backdrop { background: rgba(5, 5, 12, .7); backdrop-filter: blur(3px); }
 }
 .installer:hover { background: var(--accent-fort); }
 .installer svg { width: 18px; height: 18px; }
+.boutons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.boutons .installer { margin-top: 0; }
+.installer.second { background: var(--tuile); color: var(--encre); }
+.installer.second:hover { background: var(--tuile-survol); }
 .commande { margin: 10px 0 0; color: var(--faible); font-size: 12.5px; overflow-wrap: anywhere; }
 .groupe { margin-top: 22px; }
 .groupe h3 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--discret); }
@@ -285,7 +289,9 @@ dialog::backdrop { background: rgba(5, 5, 12, .7); backdrop-filter: blur(3px); }
 
     <footer class="pied">
       <p id="pied-cmd"></p>
-      <p>« Installer dans Claude Code » ouvre un lien <code>claude-cli://</code> : Claude Code s'ouvre avec la consigne d'installation déjà tapée, et rien n'est envoyé avant Entrée. S'il ne se passe rien, lancez <code>claude</code> et envoyez un premier message : c'est à ce moment que Claude Code enregistre le lien.</p>
+      <p>« Installer ou mettre à jour dans Claude Desktop » ouvre un lien <code>claude://code/new</code> : l'onglet Code de Claude Desktop s'ouvre avec la consigne déjà tapée (ajout ou mise à jour de la marketplace, puis installation ou mise à jour du plugin), et rien n'est envoyé avant Entrée. Le même bouton sert pour les mises à jour.</p>
+      <p>« Claude Code (terminal) » fait la même chose par un lien <code>claude-cli://</code>. S'il ne se passe rien, lancez <code>claude</code> et envoyez un premier message : c'est à ce moment que Claude Code enregistre le lien.</p>
+      <p>Pour les plugins des onglets Chat et Cowork de Claude Desktop, aucun lien ne permet encore d'ajouter une marketplace : Personnaliser &gt; Plugins personnels &gt; « + » &gt; Ajouter une marketplace, puis l'adresse du dépôt.</p>
     </footer>
   </main>
 </div>
@@ -315,6 +321,7 @@ dialog::backdrop { background: rgba(5, 5, 12, .7); backdrop-filter: blur(3px); }
     ["mcp", "Serveurs MCP", "serveur MCP", "serveurs MCP"]
   ];
   var TERMINAL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg>';
+  var BUREAU = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>';
   var TEINTES = [["#8B7CF6", "#4F46E5"], ["#22D3EE", "#0E7490"], ["#F472B6", "#BE185D"], ["#34D399", "#047857"], ["#FB923C", "#C2410C"], ["#60A5FA", "#1D4ED8"]];
 
   function libelle(c) { return LIBELLES[c] || (c ? c.charAt(0).toUpperCase() + c.slice(1) : "Autres"); }
@@ -347,13 +354,15 @@ dialog::backdrop { background: rgba(5, 5, 12, .7); backdrop-filter: blur(3px); }
     return parties.join(", ");
   }
 
-  function consigne(nom) {
-    return [
-      "Installe le plugin " + nom + " de la marketplace " + mk + " :",
+  function consigne(nom, desktop) {
+    var etapes = [
+      "Installe ou mets à jour le plugin " + nom + " de la marketplace " + mk + " :",
       "1. Si `claude plugin marketplace list` ne montre pas " + mk + ", lance `claude plugin marketplace add " + donnees.depot + "` ; sinon lance `claude plugin marketplace update " + mk + "`.",
-      "2. Lance `claude plugin install " + nom + "@" + mk + "`.",
-      "3. Confirme la version installée et rappelle-moi de redémarrer Claude Code pour charger le plugin."
-    ].join("\n");
+      "2. Si le plugin est déjà installé, lance `claude plugin update " + nom + "@" + mk + "` ; sinon lance `claude plugin install " + nom + "@" + mk + "`.",
+      "3. Confirme la version installée et rappelle-moi de redémarrer " + (desktop ? "Claude Desktop" : "Claude Code") + " pour charger le plugin."
+    ];
+    if (desktop) etapes.push("Si la commande `claude` est introuvable, ne l'installe pas : donne-moi plutôt les commandes `/plugin marketplace update " + mk + "` et `/plugin install " + nom + "@" + mk + "` à taper ici.");
+    return etapes.join("\n");
   }
 
   function tuile(p) {
@@ -396,11 +405,18 @@ dialog::backdrop { background: rgba(5, 5, 12, .7); backdrop-filter: blur(3px); }
       corps.appendChild(mots);
     }
 
+    var boutons = el("div", "boutons");
     var lien = el("a", "installer");
-    lien.href = "claude-cli://open?q=" + encodeURIComponent(consigne(p.nom));
-    lien.innerHTML = TERMINAL;
-    lien.appendChild(document.createTextNode("Installer dans Claude Code"));
-    corps.appendChild(lien);
+    lien.href = "claude://code/new?q=" + encodeURIComponent(consigne(p.nom, true));
+    lien.innerHTML = BUREAU;
+    lien.appendChild(document.createTextNode("Installer ou mettre à jour dans Claude Desktop"));
+    boutons.appendChild(lien);
+    var cli = el("a", "installer second");
+    cli.href = "claude-cli://open?q=" + encodeURIComponent(consigne(p.nom, false));
+    cli.innerHTML = TERMINAL;
+    cli.appendChild(document.createTextNode("Claude Code (terminal)"));
+    boutons.appendChild(cli);
+    corps.appendChild(boutons);
     var cmd = el("p", "commande");
     cmd.appendChild(el("code", "", "claude plugin install " + p.nom + "@" + mk));
     corps.appendChild(cmd);
