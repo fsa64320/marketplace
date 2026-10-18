@@ -4,7 +4,7 @@ Marketplace personnelle de plugins pour Claude Code : skills, agents, commandes 
 
 ## Installer
 
-Le catalogue en ligne, https://fsa64320.github.io/marketplace/, liste les plugins ; le bouton « Installer dans Claude Code » de chaque plugin ouvre Claude Code avec la consigne d'installation pré-remplie (lien `claude-cli://`).
+Le catalogue en ligne, https://fsa64320.github.io/marketplace/, liste les plugins. Le bouton « Installer ou mettre à jour dans Claude Desktop » de chaque plugin ouvre l'onglet Code de Claude Desktop avec la consigne pré-remplie (lien `claude://code/new`) ; un second bouton fait de même dans Claude Code en terminal (lien `claude-cli://`).
 
 Dans un terminal :
 
