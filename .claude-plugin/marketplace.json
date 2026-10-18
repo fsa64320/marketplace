@@ -60,6 +60,11 @@
         "audio",
         "tts"
       ]
+    },
+    {
+      "name": "navigateur-web",
+      "source": "./plugins/navigateur-web",
+      "description": "Navigation web pilotée par agent-browser : ouvrir, lire, remplir et capturer des pages, avec installation et configuration de l'outil au premier usage"
     }
   ]
 }
